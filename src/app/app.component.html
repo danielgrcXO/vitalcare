@@ -1,23 +1,35 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
 <body>
     <h2>Dasboard</h2>
-    <div id="mainBanner" class="container-md">
-    </div>
-    <div class="row">
-        <div class="card text-white bg-strong-blue mb-3 w-50 m-3">
-            <div class="card-body">
-            <h5 class="card-title">Welcome to Vital Care !</h5>
-            <p class="card-text">Monitor and manage the health of your patients.</p>
-            <button type="button" class="btn btn-info text-white d-block m-auto">Start</button>
+    <div id="mainBanner" class="container-md"></div>
+    <div class="row col-12">
+        <div class="col-8">
+            <div class="card text-white bg-strong-blue mb-3 m-3">
+                <div class="col-6"> 
+                    <div class="card-body">
+                        <h5 class="card-title">Welcome to Vital Care !</h5>
+                        <p class="card-text">Monitor and manage the health of your patients.</p>
+                        <button type="button" class="btn btn-info text-white d-block m-auto">Start</button>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <span id="iconBanner">
+                        <img alt="medic-icon" src="/assets/icons/cardiogram.png" style="width: 80px; height: 80px">
+                    </span>
+                </div>
             </div>
         </div>
-        <div class="card text-dark bg-light mb-3 w-25 m-2 border-0">
-            <div class="card-body">
-                <div class="row">
-                    <span></span>
-                    <p class="card-text">Titulo del paciente</p>
-                </div>
-                <div class="row">
-                    <p class="card-text">Ubicacion de la camilla</p>
+        <div class="col-4">
+            <div class="card text-dark bg-light mb-3 m-3 border-0">
+                <div class="card-body">
+                    <div class="row">
+                        <span></span>
+                        <p class="card-text">Titulo del paciente</p>
+                    </div>
+                    <div class="row">
+                        <p class="card-text">Ubicacion de la camilla</p>
+                    </div>
                 </div>
             </div>
         </div>
