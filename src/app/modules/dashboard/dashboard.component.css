@@ -1,0 +1,12 @@
+body{
+    background-color: #F2F6FF;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bg-strong-blue {
+    background-color: #585CE4;
+}
+
+#parameter {
+    color: blueviolet;
+}

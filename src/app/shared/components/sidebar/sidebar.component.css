@@ -1,0 +1,10 @@
+:host{
+    padding: 20px;
+    background-color: #fff;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+    font-weight: lighter;
+}

@@ -2,18 +2,19 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { MainComponent } from './modules/main/main.component';
-import { DefaultModule } from './shared/layout/default/default.module';
-import { DashboardComponent } from './modules/dashboard/dashboard.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DefaultComponent } from './layouts/default/default.component';
+import { DefaultModule } from './layouts/default/default.module';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MainComponent,
-    DashboardComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     DefaultModule
   ],
   providers: [],
