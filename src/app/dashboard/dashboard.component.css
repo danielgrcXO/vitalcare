@@ -1,0 +1,320 @@
+.header{
+    background-color: rgb(254, 255, 255);
+    margin-left: 321px;
+    margin-top: -774px;
+    height: 62px;
+}
+
+.heartPulseIconHeader{
+    font-size: 14px;
+}
+
+.titleHeader{
+    font-size: 20px;
+    color: #7a7a7a;
+    margin-left: 1090px;
+    padding-top: 15px;
+}
+
+.welcome-container{
+    background-color: #585CE4;
+    margin-left: 340px;
+    margin-top: 40px;
+    margin-right: 420px;
+    height: 140px;
+    border-radius: 10px;
+}
+
+.welcome-container .welcome-message{
+    color:rgb(254, 255, 255);
+    margin-left: 30px;
+    padding-top: 20px;
+    font-size: 20px;
+}
+
+.welcome-container .welcome-description{
+    color:rgb(254, 255, 255);
+    margin-left: 30px;
+}
+
+img{
+    height: 110px;
+    margin-left: 630px;
+    margin-top: -140px;
+}
+
+.patientInfo-container{
+    background-color: rgb(254, 255, 255);
+    margin-left: 1140px;
+    margin-top: -140px;
+    margin-right: 20px;
+    height: 140px;
+    border-radius: 10px;
+}
+
+.bloodPressure{
+    background-color: rgb(254, 255, 255);  
+    margin-left: 340px;
+    width:16%;
+    margin-top: 30px;
+    border-radius: 10px;
+    height: 140px;
+}
+
+.HeartRate{
+    background-color: rgb(254, 255, 255);  
+    margin-left: 650px;
+    width:16%;
+    margin-top: -139px;
+    border-radius: 10px;
+    height: 140px;
+}
+
+.temperature{
+    background-color: rgb(254, 255, 255);
+    margin-left: 965px;
+    width:16%;
+    margin-top: -139px;
+    border-radius: 10px;
+    height: 140px;
+}
+
+.oxygen{
+    background-color: rgb(254, 255, 255);
+    margin-left: 1270px;
+    width:16%;
+    margin-top: -139px;
+    border-radius: 10px;
+    height: 140px;
+}
+
+.graph{
+    background-color: rgb(254, 255, 255);
+    margin-left: 340px;
+    width:45%;
+    margin-top: 35px;
+    border-radius: 10px;
+    height: 250px;
+}
+
+.reports{
+    background-color: rgb(254, 255, 255);
+    margin-left: 1060px;
+    width:29.5%;
+    margin-top: -250px;
+    border-radius: 10px;
+    height: 250px;
+}
+
+.container-graph{
+    margin-left: 700px;
+}
+
+fa-icon{
+    font-size: 46px;
+    margin-left: 110px;
+    color: #585CE4;
+}
+
+.bloodPressureTitle{
+    margin-left: 68px;
+    margin-top: -2px;
+    color: #7a7a7a;
+}
+
+.bloodPressure-value{
+    margin-left: 77px;
+    margin-top: -10px;
+    font-size: 14px;
+    color: #585de4ad;
+    font-weight: bold;
+}
+
+.heartPulseIcon{
+    margin-left: 100px;
+}
+
+.heartPulseTitle{
+    margin-left: 83px;
+    margin-top: -2px;
+    color: #7a7a7a;
+}
+
+.heartRate-value{
+    font-size: 14px;
+    color: #585de4ad;
+    font-weight: bold;
+    margin-top: -10px;
+    margin-left: 101px;
+}
+
+.temperatureTitle{
+    margin-left: 68px;
+    margin-top: -2px;
+    color: #7a7a7a;
+}
+
+.temperature-value{
+    margin-left: 101px;
+    margin-top: -10px;
+    font-size: 14px;
+    color: #585de4ad;
+    font-weight: bold;
+}
+
+.oxygenIcon{
+    margin-left: 100px;
+}
+
+.oxygenTitle{
+    margin-left: 56px;
+    margin-top: -2px;
+    color: #7a7a7a;
+}
+
+.oxygen-value{
+    margin-left: 95px;
+    margin-top: -10px;
+    font-size: 14px;
+    color: #585de4ad;
+    font-weight: bold;
+}
+
+.medicalReports{
+    margin-top:0px;
+    color: #7a7a7a;
+    text-align: center;
+    padding-top: 13px;
+}
+
+select{
+    padding: 3px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    width: 30%;
+    color: #7a7a7a;
+    border-color:  #7a7a7a;
+    margin-left: 13px;
+}
+
+.reportIcon{
+    padding-right: 10px;
+    font-size: 22px;
+    margin-left: 15px;
+    padding-top: 50px;
+}
+
+.reportTitle{
+    font-size: 14px;
+    color: #7a7a7a;
+}
+
+.amountReport{
+    font-size: 14px;
+    color: #7a7a7a;
+    margin-left: 365px;
+    margin-top: -40px;
+}
+
+.userIcon{
+    font-size: 22px;
+    margin-left: 15px;
+    padding-right: 20px;
+}
+
+.patientName{
+    font-weight: bold;
+    font-size: 14px;
+    color: #7a7a7aa2;
+    margin-top: -20px;
+    padding-top: 10px;
+}
+
+.patientStatus{
+    font-weight: bold;
+    margin-left: -6px;
+    font-size: 14px;
+    color: #7a7a7aa8;
+    margin-top: -20px;
+    padding-top: 10px;
+}
+
+.patientRoom{
+    font-weight: bold;
+    margin-left: 3px;
+    font-size: 14px;
+    color: #7a7a7aa1;
+    margin-top: -20px;
+    padding-top: 10px;
+}
+
+.patientMenu{
+    margin-right: 1220px;
+    margin-top: -410px;
+    margin-left: 5px;
+}
+
+.patientIcon{
+    color:rgb(45, 189, 53);
+    padding-right: 10px;
+    font-size: 22px;
+    margin-left: 15px;
+}
+
+.patientIcon2{
+    color:rgb(189, 74, 45);
+    padding-right: 10px;
+    font-size: 22px;
+    margin-left: 15px;
+}
+
+.patientIcon3{
+    color:rgb(110, 189, 45);
+    padding-right: 10px;
+    font-size: 22px;
+    margin-left: 15px;
+}
+
+.patientIcon4{
+    color:rgb(187, 189, 45);
+    padding-right: 10px;
+    font-size: 22px;
+    margin-left: 15px;
+}
+
+.titlePatientStatus{
+    margin-left: 16px;
+    color: #7a7a7aa8;
+}
+
+.patient1:hover{
+    background-color: #e6e6e675;
+}
+
+.patient2:hover{
+    background-color: #e6e6e675;
+}
+
+.patient3:hover{
+    background-color: #e6e6e675;
+}
+
+.patient4:hover{
+    background-color: #e6e6e675;
+}
+
+.patient1{
+    color: #7a7a7aa8;
+}
+
+.patient2{
+    color: #7a7a7aa8;
+}
+
+.patient3{
+    color: #7a7a7aa8;
+}
+
+.patient4{
+    color: #7a7a7aa8;
+}

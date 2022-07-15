@@ -1,0 +1,27 @@
+/*Fondo de pantalla principal*/
+.image{
+    height:47.1em; background-size:cover; width:auto;
+    background-image:url(/../assets/images/mainPage.jpg);
+    background-position:50% 50%;
+    margin-left: 320px;
+    margin-top: -754px;
+  }
+
+.mainTitle{
+   width: 40%;
+   font-size: 45px;
+   margin-left: 380px;
+   margin-top: -640px;
+}
+
+.mainDescription{
+  margin-left: 380px;
+  width: 40%;
+  font-size: 20px;
+  text-align: justify;
+  color: gray;
+}
+  
+fa-icon{
+  color: #585CE4;
+}

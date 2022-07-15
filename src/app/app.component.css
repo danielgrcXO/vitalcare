@@ -1,0 +1,39 @@
+.menu{
+    background-color: rgb(254, 255, 255);
+    width: 19%;
+    height:97.3vh; 
+    padding: 10px;
+    padding-left: 20px;
+}
+
+.menu p{
+    text-align: center;
+    color: rgba(125, 125, 125, 0.696);
+    margin-top: 450px;
+}
+
+.titleMenu{
+    width: 85%;
+    padding: 10px;
+    border-bottom: 2px solid rgba(209, 205, 205, 0.567);
+    padding-bottom: 15px; 
+}
+
+.menu ol li{
+    padding: 15px;
+    list-style: none;
+    margin-left: -58px;
+    font-size: 16px;
+    transition: background-color .3s;
+}
+
+fa-icon{
+    padding-right: 5px;
+    font-size: 20px;
+    color: #585CE4;
+}
+
+.menu ol li:hover{
+    background-color: #e6e6e675;
+}
+

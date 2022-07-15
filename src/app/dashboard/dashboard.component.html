@@ -1,0 +1,89 @@
+<!--Div del header-->
+<div class="header">
+    <p class="titleHeader">VitalCare®</p>
+</div>
+
+<!--Div del mensaje de bienvenida-->
+<div class="welcome-container">
+    <p class="welcome-message">Welcome to VitalCare's Dashboard !</p>
+    <p class="welcome-description"> Monitor and manage the health of your patients.</p>
+    <img src="/../assets/images/portapapeles.png">
+</div>
+
+<!--Div de la informacion del paciente-->
+<div class="patientInfo-container">
+    <p class="patientName"><fa-icon class="userIcon"[icon]="userIcon"> </fa-icon>Karely Hernandez Gonzales</p>
+    <p class="patientStatus"><fa-icon class="userIcon"[icon]="statusIcon"> </fa-icon>Normal Status</p>
+    <p class="patientRoom"><fa-icon class="userIcon"[icon]="locationIcon"> </fa-icon>Room 1</p>
+</div>
+
+<!--Div de bloodPressure-->
+<div class="bloodPressure">
+    <fa-icon [icon]="bloodPressureIcon"> </fa-icon>
+    <p class="bloodPressureTitle">Blood Pressure</p>
+    <p class="bloodPressure-value">110/70 mmHg</p>
+</div>
+
+<!--Div del heartRate-->
+<div class="HeartRate">
+    <fa-icon class="heartPulseIcon" [icon]=" heartPulseIcon"></fa-icon>
+    <p class="heartPulseTitle">Heart Rate</p>
+    <p class="heartRate-value">85 lpm</p>
+</div>
+
+<!--Div del temperature-->
+<div class="temperature">
+    <fa-icon class="temperatureIcon" [icon]=" temperatureIcon"></fa-icon>
+    <p class="temperatureTitle">Temperature</p>
+    <p class="temperature-value">98.6°F </p>
+</div>
+
+<!--Div del oxygen-->
+<div class="oxygen">
+    <fa-icon class="oxygenIcon" [icon]="oxygenIcon"></fa-icon>
+    <p class="oxygenTitle">Blood Oxygenation</p>
+    <p class="oxygen-value">83 mm Hg</p>
+</div>
+
+<!--Div de la grafica-->
+<div class="graph">
+    <highcharts-chart
+        [Highcharts]="Highcharts" 
+        [options]="chartOptions">
+    </highcharts-chart>
+</div>
+
+<!--Div de los reportes -->
+<div class="reports">
+    <p class="medicalReports">Medical Reports</p>
+
+    <Select name = "reports">
+        <Option  selected="true" value = "Select a date" disabled="disabled">Select a date</Option>
+        <Option value = "option1"> 12/06/2022 </Option>
+        <Option value = "option2"> 13/06/2022 </Option>
+        <Option value = "opción3"> 14/06/2022 </Option>
+        <Option value = "opción4"> 15/06/2022 </Option>
+        <Option value = "opción5"> 16/06/2022 </Option>
+        <Option value = "opción6"> 17/06/2022 </Option>
+    </Select>
+
+    <p class="reportTitle"><fa-icon class="reportIcon" [icon]="reportIcon"></fa-icon>  HeartRate-Oxygen.pdf  (12-06-2022)</p> 
+    <p class="amountReport">2Mb</p>
+
+    <p class="reportTitle"><fa-icon class="reportIcon" [icon]="reportIcon"></fa-icon>  Blood Pressure.pdf  (12-06-2022)</p> 
+    <p class="amountReport">2Mb</p>
+
+    <p class="reportTitle"><fa-icon class="reportIcon" [icon]="reportIcon"></fa-icon>  Temperature.pdf  (12-06-2022)</p> 
+    <p class="amountReport">2Mb</p>
+</div>
+
+<!--Div de los pacientes en menu principal-->
+<div class="patientMenu">
+    <p class="titlePatientStatus">Patient's Status</p>
+    <p class="patient1"><fa-icon class="patientIcon" [icon]="patientIcon"></fa-icon>Karely Hernandez Gonzales</p>
+    <p class="patient2"><fa-icon class="patientIcon2" [icon]="patientIcon"></fa-icon>Ivan Villanueva Sanchez</p>
+    <p class="patient3"><fa-icon class="patientIcon3" [icon]="patientIcon"></fa-icon>Claudia Angulo Garcia</p>
+    <p class="patient4"><fa-icon class="patientIcon4" [icon]="patientIcon"></fa-icon>Marina Guarneros Sanchez</p>
+</div>
+
+

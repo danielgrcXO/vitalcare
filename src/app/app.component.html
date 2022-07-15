@@ -1,2 +1,23 @@
-<p>dani</p>
+<!--MENU-->
+<div class="menu">
+    <div class="titleMenu">Menu</div>
+    <ol>
+        <li (click)="goHomePage()"><fa-icon [icon]="HomeIcon"> </fa-icon>  Home</li>
+        <li (click)="goDashboardPage()"><fa-icon [icon]="ChartIcon"> </fa-icon> Dashboard</li>
+        <li (click)="goPatientLocation()"><fa-icon [icon]="PatientIcon"> </fa-icon> Patient's Location</li>
+    </ol>
+    <p>VitalCare®</p>
+</div>
+
+<!--redireccionar-->
+<router-outlet></router-outlet>
+
+
+
+
+
+
+
+
+
 

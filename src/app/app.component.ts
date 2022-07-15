@@ -1,4 +1,14 @@
+//Imports globales
 import { Component } from '@angular/core';
+import { Router} from '@angular/router';
+
+//Imports de iconos para el menu principal
+import {faHouse} from '@fortawesome/free-solid-svg-icons';
+import {faChartLine} from '@fortawesome/free-solid-svg-icons';
+import {faHospitalUser} from '@fortawesome/free-solid-svg-icons';
+
+/*===================================================================*/
+/*===================================================================*/
 
 @Component({
   selector: 'app-root',
@@ -6,5 +16,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  
+  constructor(private router: Router){}
+  
+  //Iconos del menu principal
   title = 'vitalcare';
+  HomeIcon = faHouse;
+  ChartIcon = faChartLine;
+  PatientIcon = faHospitalUser; 
+
+ 
+  //Funciones para redirigir a componentes
+  goHomePage(){ this.router.navigate(['/home']);}
+  goDashboardPage(){ this.router.navigate(['/dashboard'])}
+  goPatientLocation(){ this.router.navigate(['/patientLocation']);}
 }
+
+
+
+
