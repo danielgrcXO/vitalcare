@@ -35,5 +35,6 @@ fa-icon{
 
 .menu ol li:hover{
     background-color: #e6e6e675;
+    cursor: pointer;
 }
 

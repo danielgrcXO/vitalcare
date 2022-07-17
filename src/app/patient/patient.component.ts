@@ -14,4 +14,8 @@ export class PatientComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  public open(){
+    alert("evento");
+  }
+
 }
