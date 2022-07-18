@@ -1,6 +1,7 @@
 //Imports globales
 import { Component } from '@angular/core';
 import { Router} from '@angular/router';
+//import { MedicaldataService} from './services/medicaldata.service';
 
 //Imports de iconos para el menu principal
 import {faHouse} from '@fortawesome/free-solid-svg-icons';
@@ -17,8 +18,12 @@ import {faHospitalUser} from '@fortawesome/free-solid-svg-icons';
 })
 export class AppComponent {
   
-  constructor(private router: Router){}
   
+  constructor(private router: Router, /*protected medicaldata: MedicaldataService*/){}
+  
+  ngOnInit(): void{
+  }
+
   //Iconos del menu principal
   title = 'vitalcare';
   HomeIcon = faHouse;

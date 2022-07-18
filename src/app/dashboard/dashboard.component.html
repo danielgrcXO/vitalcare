@@ -5,52 +5,60 @@
 
 <!--Div del mensaje de bienvenida-->
 <div class="welcome-container">
-    <p class="welcome-message">Welcome to VitalCare's Dashboard !</p>
-    <p class="welcome-description"> Monitor and manage the health of your patients.</p>
-    <img src="/../assets/images/portapapeles.png">
+    <p class="patientName"><fa-icon class="userIcon"[icon]="userIcon"> </fa-icon>Karely Hernandez Gonzales</p>
+    <p class="patientStatus"><fa-icon class="userIcon"[icon]="statusIcon"> </fa-icon>Status: <a class="Normal">Normal</a></p>
 </div>
+
+<div class="container-location">
+    <p class="patientRoom"><fa-icon class="userIcon"[icon]="locationIcon"> </fa-icon>Location: <a class="Normal">Room 1</a></p>
+    <p class="patientYearsOld"><fa-icon class="userIcon"[icon]="yeardOldIcon"> </fa-icon>Age : 24</p>
+</div>
+
 
 <!--Div de la informacion del paciente-->
 <div class="patientInfo-container">
-    <p class="patientName"><fa-icon class="userIcon"[icon]="userIcon"> </fa-icon>Karely Hernandez Gonzales</p>
-    <p class="patientStatus"><fa-icon class="userIcon"[icon]="statusIcon"> </fa-icon>Normal Status</p>
-    <p class="patientRoom"><fa-icon class="userIcon"[icon]="locationIcon"> </fa-icon>Room 1</p>
+    <p class="bloodType">Blood Type</p>
+    <a class="bloodTypeIndicador">A+</a>
 </div>
 
 <!--Div de bloodPressure-->
 <div class="bloodPressure">
-    <fa-icon [icon]="bloodPressureIcon"> </fa-icon>
+    <fa-icon class="bloodPressureIcon" [icon]="bloodPressureIcon"> </fa-icon>
     <p class="bloodPressureTitle">Blood Pressure</p>
     <p class="bloodPressure-value">110/70 mmHg</p>
 </div>
 
 <!--Div del heartRate-->
 <div class="HeartRate">
-    <fa-icon class="heartPulseIcon" [icon]=" heartPulseIcon"></fa-icon>
-    <p class="heartPulseTitle">Heart Rate</p>
-    <p class="heartRate-value">85 lpm</p>
+   <fa-icon class="heartPulseIcon" [icon]=" heartPulseIcon"></fa-icon>
+   <p class="heartPulseTitle">Heart Rate</p>
+   <p class="heartRate-value">85 lpm</p>
 </div>
 
 <!--Div del temperature-->
 <div class="temperature">
-    <fa-icon class="temperatureIcon" [icon]=" temperatureIcon"></fa-icon>
+   <fa-icon class="temperatureIcon" [icon]=" temperatureIcon"></fa-icon>
     <p class="temperatureTitle">Temperature</p>
     <p class="temperature-value">98.6°F </p>
 </div>
 
 <!--Div del oxygen-->
 <div class="oxygen">
-    <fa-icon class="oxygenIcon" [icon]="oxygenIcon"></fa-icon>
-    <p class="oxygenTitle">Blood Oxygenation</p>
-    <p class="oxygen-value">83 mm Hg</p>
+   <fa-icon class="oxygenIcon" [icon]="oxygenIcon"></fa-icon>
+   <p class="oxygenTitle">Blood Oxygenation</p>
+   <p class="oxygen-value">83 Hg</p>
 </div>
 
 <!--Div de la grafica-->
 <div class="graph">
-    <highcharts-chart
-        [Highcharts]="Highcharts" 
-        [options]="chartOptions">
-    </highcharts-chart>
+    <div style="display: block">
+        <canvas  *ngIf="this.loadData" baseChart height="110"
+          [datasets]="chartData"
+          [options]="options"
+          [labels]="labels"
+          [type]="'bar'">
+        </canvas>
+    </div>
 </div>
 
 <!--Div de los reportes -->

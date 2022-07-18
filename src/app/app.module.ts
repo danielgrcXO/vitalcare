@@ -4,8 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 //imports de librerias instaladas
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HighchartsChartModule } from 'highcharts-angular';
 import { AppRoutingModule } from './app-routing.module';
+import {HttpClientModule} from '@angular/common/http'; //Nueva linea
+import { NgChartsModule } from 'ng2-charts'; //Nueva linea
+import { FormsModule } from '@angular/forms'; //Nueva linea
 
 //Imports de componentes creados
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -26,8 +28,11 @@ import { PatientComponent } from './patient/patient.component';
   imports: [
     BrowserModule,
     FontAwesomeModule,
-    HighchartsChartModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule, //Nueva linea
+    FormsModule, // Nueva línea
+    NgChartsModule //Nueva linea
+
   ],
   providers: [],
   bootstrap: [AppComponent]

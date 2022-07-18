@@ -17,36 +17,27 @@
 }
 
 .welcome-container{
-    background-color: #585CE4;
+    background-color: white;
     margin-left: 340px;
     margin-top: 40px;
-    margin-right: 420px;
+    margin-right: 800px;
     height: 140px;
     border-radius: 10px;
 }
 
-.welcome-container .welcome-message{
-    color:rgb(254, 255, 255);
-    margin-left: 30px;
-    padding-top: 20px;
-    font-size: 20px;
-}
-
-.welcome-container .welcome-description{
-    color:rgb(254, 255, 255);
-    margin-left: 30px;
-}
-
-img{
-    height: 110px;
-    margin-left: 630px;
+.container-location{
+    background-color: white;
+    height: 140px;
+    margin-left: 748px;
+    border-radius: 10px;
+    margin-right: 410px;
     margin-top: -140px;
 }
 
 .patientInfo-container{
     background-color: rgb(254, 255, 255);
     margin-left: 1140px;
-    margin-top: -140px;
+    margin-top: -158px;
     margin-right: 20px;
     height: 140px;
     border-radius: 10px;
@@ -55,7 +46,7 @@ img{
 .bloodPressure{
     background-color: rgb(254, 255, 255);  
     margin-left: 340px;
-    width:16%;
+    width:18%;
     margin-top: 30px;
     border-radius: 10px;
     height: 140px;
@@ -63,8 +54,8 @@ img{
 
 .HeartRate{
     background-color: rgb(254, 255, 255);  
-    margin-left: 650px;
-    width:16%;
+    margin-left: 645px;
+    width:18%;
     margin-top: -139px;
     border-radius: 10px;
     height: 140px;
@@ -72,8 +63,8 @@ img{
 
 .temperature{
     background-color: rgb(254, 255, 255);
-    margin-left: 965px;
-    width:16%;
+    margin-left: 950px;
+    width:18%;
     margin-top: -139px;
     border-radius: 10px;
     height: 140px;
@@ -81,8 +72,8 @@ img{
 
 .oxygen{
     background-color: rgb(254, 255, 255);
-    margin-left: 1270px;
-    width:16%;
+    margin-left: 1255px;
+    width:17%;
     margin-top: -139px;
     border-radius: 10px;
     height: 140px;
@@ -110,73 +101,91 @@ img{
     margin-left: 700px;
 }
 
-fa-icon{
-    font-size: 46px;
-    margin-left: 110px;
+.bloodPressureIcon{
     color: #585CE4;
+    font-size: 65px;
+    position: relative;
+    top: 25px;
+    left: 200px;
 }
 
 .bloodPressureTitle{
-    margin-left: 68px;
-    margin-top: -2px;
+    margin-left: 18px;
+    margin-top: -80px;
     color: #7a7a7a;
 }
 
 .bloodPressure-value{
-    margin-left: 77px;
-    margin-top: -10px;
-    font-size: 14px;
-    color: #585de4ad;
+    margin-left: 20px;
+    margin-top: -1px;
+    font-size: 23px;
+    color: rgba(124, 218, 124, 0.993);
     font-weight: bold;
 }
 
 .heartPulseIcon{
-    margin-left: 100px;
+    color: #585CE4;
+    font-size: 65px;
+    position: relative;
+    top: 25px;
+    left: 185px;
 }
 
 .heartPulseTitle{
-    margin-left: 83px;
-    margin-top: -2px;
+    margin-left: 18px;
+    margin-top: -80px;
     color: #7a7a7a;
 }
 
 .heartRate-value{
-    font-size: 14px;
-    color: #585de4ad;
+    margin-left: 20px;
+    margin-top: -1px;
+    font-size: 27px;
+    color: rgba(124, 218, 124, 0.993);
     font-weight: bold;
-    margin-top: -10px;
-    margin-left: 101px;
+}
+
+.temperatureIcon{
+    color: #585CE4;
+    font-size: 65px;
+    position: relative;
+    top: 25px;
+    left: 190px;
 }
 
 .temperatureTitle{
-    margin-left: 68px;
-    margin-top: -2px;
+    margin-left: 18px;
+    margin-top: -80px;
     color: #7a7a7a;
 }
 
 .temperature-value{
-    margin-left: 101px;
-    margin-top: -10px;
-    font-size: 14px;
-    color: #585de4ad;
+    margin-left: 20px;
+    margin-top: -1px;
+    font-size: 27px;
+    color: rgba(124, 218, 124, 0.993);
     font-weight: bold;
 }
 
 .oxygenIcon{
-    margin-left: 100px;
+    color: #585CE4;
+    font-size: 60px;
+    position: relative;
+    top: 25px;
+    left: 165px;
 }
 
 .oxygenTitle{
-    margin-left: 56px;
-    margin-top: -2px;
+    margin-left: 18px;
+    margin-top: -80px;
     color: #7a7a7a;
 }
 
 .oxygen-value{
-    margin-left: 95px;
-    margin-top: -10px;
-    font-size: 14px;
-    color: #585de4ad;
+    margin-left: 20px;
+    margin-top: -1px;
+    font-size: 27px;
+    color: rgba(124, 218, 124, 0.993);
     font-weight: bold;
 }
 
@@ -217,35 +226,65 @@ select{
 }
 
 .userIcon{
-    font-size: 22px;
+    font-size: 27px;
     margin-left: 15px;
     padding-right: 20px;
+    color: #585CE4;
 }
 
 .patientName{
     font-weight: bold;
-    font-size: 14px;
+    font-size: 18px;
     color: #7a7a7aa2;
     margin-top: -20px;
-    padding-top: 10px;
+    padding-top: 15px;
 }
 
 .patientStatus{
     font-weight: bold;
     margin-left: -6px;
-    font-size: 14px;
+    font-size: 18px;
     color: #7a7a7aa8;
-    margin-top: -20px;
+    margin-top: -6px;
     padding-top: 10px;
+}
+
+.Normal{
+    color: rgba(124, 218, 124, 0.993);
 }
 
 .patientRoom{
     font-weight: bold;
-    margin-left: 3px;
-    font-size: 14px;
+    margin-left: 10px;
+    font-size: 18px;
     color: #7a7a7aa1;
-    margin-top: -20px;
+    margin-top: -125px;
+    padding-top: 15px;
+}
+
+.patientYearsOld{
+    font-weight: bold;
+    margin-left: 8px;
+    font-size: 18px;
+    color: #7a7a7aa1;
+    margin-top: -10px;
     padding-top: 10px;
+}
+
+.bloodType{
+    font-weight: bold;
+    font-size: 18px;
+    color: #7a7a7aa1;
+    padding-top: 10px;
+    padding-left: 30px;
+}
+
+.bloodTypeIndicador{
+    font-weight: bold;
+    font-size: 55px;
+    padding-left: 170px;
+    padding-top: -50px;
+    color: #585CE4;
 }
 
 .patientMenu{
@@ -318,3 +357,4 @@ select{
 .patient4{
     color: #7a7a7aa8;
 }
+
