@@ -12,6 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
 import { PatientComponent } from './patient/patient.component';
+import { NewComponent } from './patient/new/new.component';
 
 /*===================================================================*/
 /*===================================================================*/
@@ -21,7 +22,8 @@ import { PatientComponent } from './patient/patient.component';
     AppComponent,
     HomeComponent,
     DashboardComponent,
-    PatientComponent
+    PatientComponent,
+    NewComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,40 @@
+#general-container {
+    height: 500px;
+    margin: -690px 20px 0 340px ;
+}
+
+h3 {
+    margin: 0px;
+}
+
+.float-right{
+    float: right;
+}
+
+.float-left{
+    float: left;
+}
+
+.w-100{
+    width: 100%;
+}
+
+.w-50{
+    width: 50%;
+}
+
+.flex{
+    display: flex;
+}
+
+.block{
+    display: block;
+}
+
+.inline-block{
+    display: inline-block;
+}
+
+.padding-tb-10{
+    padding: 15px 0px;
+}
