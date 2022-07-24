@@ -25,28 +25,28 @@
 <div class="bloodPressure">
     <fa-icon class="bloodPressureIcon" [icon]="bloodPressureIcon"> </fa-icon>
     <p class="bloodPressureTitle">{{bloodPressureTitle}}</p>
-    <p class="bloodPressure-value">110/70 mmHg</p>
+    <p class="bloodPressure-value">{{bloodPressure + ' ' + 'mmHg'}}</p>
 </div>
 
 <!--Div del heartRate-->
 <div class="HeartRate">
    <fa-icon class="heartPulseIcon" [icon]=" heartPulseIcon"></fa-icon>
    <p class="heartPulseTitle">{{heartPulseTitle}}</p>
-   <p class="heartRate-value">85 lpm</p>
+   <p class="heartRate-value">{{heartRate + ' ' + 'lmp'}}</p>
 </div>
 
 <!--Div del temperature-->
 <div class="temperature">
    <fa-icon class="temperatureIcon" [icon]=" temperatureIcon"></fa-icon>
     <p class="temperatureTitle">{{temperatureTitle}}</p>
-    <p class="temperature-value">98.6°F </p>
+    <p class="temperature-value">{{temperature + ' ' + '°F' }} </p>
 </div>
 
 <!--Div del oxygen-->
 <div class="oxygen">
    <fa-icon class="oxygenIcon" [icon]="oxygenIcon"></fa-icon>
    <p class="oxygenTitle">{{oxygenTitle}}</p>
-   <p class="oxygen-value">83 Hg</p>
+   <p class="oxygen-value">{{oxygen + ' ' + 'Hg'}}</p>
 </div>
 
 <!--Div de la grafica-->

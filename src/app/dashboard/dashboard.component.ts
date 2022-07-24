@@ -1,6 +1,9 @@
 //imports globales
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { hearRateValues } from '../models/hearRateInterface'; //Nueva Linea
+import { bloodPressureValues} from '../models/bloodPressureInterface' //Nueva Linea
+import { temperatureValues} from '../models/temperatureInterface'; //Nueva Linea
+import { oxygenValues} from '../models/oxygenInterface' //Nueva linea
 import { DatePipe } from '@angular/common'; // Nueva linea
 
 //imports de librerias utilizadas
@@ -34,6 +37,16 @@ import {faCakeCandles} from '@fortawesome/free-solid-svg-icons';
 })
 export class DashboardComponent implements OnInit , OnDestroy {
     
+  //Variables para widgets
+  bloodPressureArray: number[] = [];
+  bloodPressure: number;
+  heartRateArray: number[] = [];
+  heartRate: number;
+  temperatureArray: number[] = [];
+  temperature: number;
+  oxygenArray: number[] = [];
+  oxygen: number;
+
   //Variables con titulos
   heartRateTitle = 'Heart Rate by minute';
   bloodPressureTitle = 'Blood Pressure';
@@ -105,9 +118,13 @@ export class DashboardComponent implements OnInit , OnDestroy {
 
     this.getData();
     this.getDate();
+    this.getBloodPressure();
+    this.getHeartRate();
+    this.getTemperature();
+    this.getOxygen();
   }
 
-  //Funcion que llama a los datos a interface
+  //Funcion que llama a los datos heartrate a grafica
   getData(){
     this.sub = this.http.get<hearRateValues[]>('http://localhost:3050/pacient/heartRate')
     .subscribe((data: hearRateValues[]) => {
@@ -125,7 +142,49 @@ export class DashboardComponent implements OnInit , OnDestroy {
       this.loadData = true;
     });
   }
-  
+
+  //Funcion que llama  datos de bloodPressure
+  getBloodPressure(){
+    this.sub = this.http.get<bloodPressureValues[]>('http://localhost:3050/pacient/bloodPressure')
+    .subscribe((data: bloodPressureValues[]) => {
+        data.map((i) => {
+          this.bloodPressureArray.push(i.bloodPressure);
+        });
+      this.bloodPressure = this.bloodPressureArray[this.bloodPressureArray.length - 1];
+    });
+  }
+
+  getHeartRate(){
+    this.sub = this.http.get<hearRateValues[]>('http://localhost:3050/pacient/heartrate')
+    .subscribe((data: hearRateValues[]) => {
+        data.map((z) => {
+          this.heartRateArray.push(z.heartRate);
+        });
+      this.heartRate = this.heartRateArray[this.heartRateArray.length - 1];
+    });
+  }
+
+  //Funcion que llama datos de temperature
+  getTemperature(){
+    this.sub = this.http.get<temperatureValues[]>('http://localhost:3050/pacient/temperature')
+    .subscribe((data: temperatureValues[]) => {
+        data.map((v) => {
+          this.temperatureArray.push(v.temperature);
+        });
+      this.temperature = this.temperatureArray[this.temperatureArray.length - 1];
+    });
+  }
+
+  //Funcion que llama datos oxygen
+  getOxygen(){
+    this.sub = this.http.get<oxygenValues[]>('http://localhost:3050/pacient/oxygen')
+    .subscribe((data: oxygenValues[]) => {
+        data.map((q) => {
+          this.oxygenArray.push(q.oxygen);
+        });
+      this.oxygen = this.oxygenArray[this.oxygenArray.length - 1];
+    });
+  }
 
   //Funcion para traer fecha actual
   getDate(){
