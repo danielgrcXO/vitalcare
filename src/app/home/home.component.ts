@@ -14,12 +14,15 @@ import {faHeartPulse} from '@fortawesome/free-solid-svg-icons';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  //variables
+  mainTitle = 'Vital Care';
+  mainDescription = ' The best doctor is the one who best inspires hope. Consult and automate patient management in a matter of minutes!';
 
   //iconos
   HeartIcon = faHeartPulse;
 
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 }

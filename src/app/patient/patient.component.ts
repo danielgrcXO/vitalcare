@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router} from '@angular/router';
 
 /*===================================================================*/
 /*===================================================================*/
@@ -10,8 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {}
+
+  public open(){
+    this.router.navigateByUrl('/patientLocation/new');
+  }
 
 }

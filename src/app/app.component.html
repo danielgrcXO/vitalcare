@@ -1,12 +1,12 @@
 <!--MENU-->
 <div class="menu">
-    <div class="titleMenu">Menu</div>
+    <div class="titleMenu"> {{ Menu }}</div>
     <ol>
-        <li (click)="goHomePage()"><fa-icon [icon]="HomeIcon"> </fa-icon>  Home</li>
-        <li (click)="goDashboardPage()"><fa-icon [icon]="ChartIcon"> </fa-icon> Dashboard</li>
-        <li (click)="goPatientLocation()"><fa-icon [icon]="PatientIcon"> </fa-icon> Patient's Location</li>
+        <li (click)="goHomePage()"><fa-icon [icon]="HomeIcon"> </fa-icon>  {{ HomeOption }} </li>
+        <li (click)="goDashboardPage()"><fa-icon [icon]="ChartIcon"> </fa-icon> {{ DashboardOption }} </li>
+        <li (click)="goPatientLocation()"><fa-icon [icon]="PatientIcon"> </fa-icon> {{ patientLocationOption }} </li>
     </ol>
-    <p>VitalCare®</p>
+    <p>{{ footer }}</p>
 </div>
 
 <!--redireccionar-->

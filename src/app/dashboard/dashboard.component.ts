@@ -1,12 +1,14 @@
 //imports globales
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { hearRateValues } from '../models/hearRateInterface';
+import { hearRateValues } from '../models/hearRateInterface'; //Nueva Linea
+import { DatePipe } from '@angular/common'; // Nueva linea
 
 //imports de librerias utilizadas
 import { BaseChartDirective } from 'ng2-charts'; //Linea nueva
 import {ChartDataset, ChartOptions} from 'chart.js'; //Linea nueva
 import { Subscription } from 'rxjs'; //Linea nueva
 import { HttpClient } from '@angular/common/http'; //Linea nueva
+
 
 
 //imports de iconos
@@ -32,6 +34,18 @@ import {faCakeCandles} from '@fortawesome/free-solid-svg-icons';
 })
 export class DashboardComponent implements OnInit , OnDestroy {
     
+  //Variables con titulos
+  heartRateTitle = 'Heart Rate by minute';
+  bloodPressureTitle = 'Blood Pressure';
+  heartPulseTitle = 'Heart Rate';
+  temperatureTitle = 'Temperature';
+  oxygenTitle = 'Blood Oxygenation';
+
+  //Obtener fecha actual
+  today: Date = new Date();
+  pipe = new DatePipe('en-US');
+  todayWithPipe: any;
+
   //iconos
   bloodPressureIcon = faDroplet;
   heartPulseIcon = faHeartPulse;
@@ -49,18 +63,22 @@ export class DashboardComponent implements OnInit , OnDestroy {
   private sub: Subscription;
   public loadData = false;
 
+
   public chartData: ChartDataset[] = [
-    {data: [], label: 'Heart Rate By Minute', backgroundColor: 'rgba(124, 218, 124, 0.993)'}
+    {data: [], label: 'Heart Rate Value'}
   ];
-  public labels: string[] = ['12:15 PM','12:16 PM','12:17 PM','12:18 PM', '12:19 PM','12:20 PM','12:21 PM','12:22 PM','12:22 PM','12:23 PM','12:24 PM','12:25 PM','12:26 PM','12:27 PM','12:28 PM','12:29 PM','12:30 PM'];
+  public labels: string[] = [];
+
   public options : ChartOptions = {
-    scales: {
-      x: {
+    responsive: true,
+    scales: {  
+      x: { 
+          //display: false,
         grid: {
           color: ''
         },
         ticks: {
-          color: '#7a7a7a'
+          color: '#7a7a7a',
         }
       },
       y: {
@@ -74,13 +92,19 @@ export class DashboardComponent implements OnInit , OnDestroy {
       }
     }
   };
- 
+
   //Constructor que inyecta el http para peticiones
   constructor(private http: HttpClient) {}
 
 
   ngOnInit(): void {
+    //recargar datos de component dashboard
+    setInterval(() =>{
+      location.reload();
+    }, 10000);
+
     this.getData();
+    this.getDate();
   }
 
   //Funcion que llama a los datos a interface
@@ -89,14 +113,28 @@ export class DashboardComponent implements OnInit , OnDestroy {
     .subscribe((data: hearRateValues[]) => {
       data.map((x) => {
         this.chartData[0].data.push(x.heartRate);
+        this.labels.push(x.Hora);
+        
+
+        if(x.heartRate === 136){
+          this.chartData[0].backgroundColor = 'rgba(124, 218, 124, 0.993)';
+        }
+
       })
       console.log(this.chartData);
       this.loadData = true;
     });
+  }
+  
+
+  //Funcion para traer fecha actual
+  getDate(){
+    this.todayWithPipe = this.pipe.transform(Date.now(), 'dd/MM/yyyy');
   }
 
   //Cancela observacion
   ngOnDestroy(){
     this.sub.unsubscribe();
   }
+
 }

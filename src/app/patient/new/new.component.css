@@ -1,0 +1,140 @@
+#general-container {
+    height: auto;
+    margin: -690px 20px 0 340px ;
+}
+
+h3 {
+    margin: 0px;
+}
+
+.float-right{
+    float: right;
+}
+
+.float-left{
+    float: left;
+}
+
+.w-100{
+    width: 100%;
+}
+
+.w-50{
+    width: 50%;
+}
+
+.h-500{
+    height: 500px;
+}
+
+.h-550{
+    height: 550px;
+}
+
+.flex{
+    display: flex;
+}
+
+.block{
+    display: block;
+}
+
+.inline-block{
+    display: inline-block;
+}
+
+.padding-tb-10{
+    padding: 15px 0px;
+}
+
+.bg-white{
+    background-color: #FFF;
+}
+
+.row{
+    width: 100%;
+    display: inline-block;
+    margin: 20px 0px;
+}
+
+.row-final{
+    width: 100%;
+    display: flex;
+    margin: 30px 0px;
+    justify-content: center;
+}
+
+.col-md{
+    display: inherit;
+    width: 50%;
+    text-align: center;
+}
+
+input, select{
+    width: 40%;
+    border: none;
+    border-radius: 4px;
+    background-color: #f2f6ff;
+    height: 1.5rem;
+}
+
+input:focus, select:focus{
+    outline: solid  #cddaf9 1px;
+}
+
+input::placeholder{
+    font-style: italic;
+    color:#aaaaaa;
+}
+
+input[type="date"]{
+    font-style: italic;
+    color:#aaaaaa;
+}
+
+fa-icon{
+    color: #585CE4;
+}
+
+.button-8 {
+    background-color: #e1ecf4;
+    border-radius: 3px;
+    border: 1px solid #7aa7c7;
+    box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+    box-sizing: border-box;
+    color: #39739d;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.15385;
+    margin: 0;
+    outline: none;
+    padding: 8px .8em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
+    width: 30%;
+  }
+  
+  .button-8:hover,
+  .button-8:focus {
+    background-color: #b3d3ea;
+    color: #2c5777;
+  }
+  
+  .button-8:focus {
+    box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+  }
+  
+  .button-8:active {
+    background-color: #a0c7e4;
+    box-shadow: none;
+    color: #2c5777;
+  }

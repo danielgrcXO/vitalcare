@@ -24,6 +24,13 @@ export class AppComponent {
   ngOnInit(): void{
   }
 
+  //Titulos del menu principal
+  Menu = 'Menu';
+  HomeOption = 'Home';
+  DashboardOption = 'Dashboard';
+  patientLocationOption = "Patient's Location";
+  footer = 'VitalCare®';
+
   //Iconos del menu principal
   title = 'vitalcare';
   HomeIcon = faHouse;

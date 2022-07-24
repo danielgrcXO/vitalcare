@@ -24,35 +24,37 @@
 <!--Div de bloodPressure-->
 <div class="bloodPressure">
     <fa-icon class="bloodPressureIcon" [icon]="bloodPressureIcon"> </fa-icon>
-    <p class="bloodPressureTitle">Blood Pressure</p>
+    <p class="bloodPressureTitle">{{bloodPressureTitle}}</p>
     <p class="bloodPressure-value">110/70 mmHg</p>
 </div>
 
 <!--Div del heartRate-->
 <div class="HeartRate">
    <fa-icon class="heartPulseIcon" [icon]=" heartPulseIcon"></fa-icon>
-   <p class="heartPulseTitle">Heart Rate</p>
+   <p class="heartPulseTitle">{{heartPulseTitle}}</p>
    <p class="heartRate-value">85 lpm</p>
 </div>
 
 <!--Div del temperature-->
 <div class="temperature">
    <fa-icon class="temperatureIcon" [icon]=" temperatureIcon"></fa-icon>
-    <p class="temperatureTitle">Temperature</p>
+    <p class="temperatureTitle">{{temperatureTitle}}</p>
     <p class="temperature-value">98.6°F </p>
 </div>
 
 <!--Div del oxygen-->
 <div class="oxygen">
    <fa-icon class="oxygenIcon" [icon]="oxygenIcon"></fa-icon>
-   <p class="oxygenTitle">Blood Oxygenation</p>
+   <p class="oxygenTitle">{{oxygenTitle}}</p>
    <p class="oxygen-value">83 Hg</p>
 </div>
 
 <!--Div de la grafica-->
 <div class="graph">
+    <p class="titleGraph"> {{heartRateTitle}}</p>
+    <p class="titleDate"> {{todayWithPipe}}</p>
     <div style="display: block">
-        <canvas  *ngIf="this.loadData" baseChart height="110"
+        <canvas  *ngIf="this.loadData" baseChart height="110" 
           [datasets]="chartData"
           [options]="options"
           [labels]="labels"
