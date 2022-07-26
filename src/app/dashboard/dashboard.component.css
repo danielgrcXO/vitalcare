@@ -108,9 +108,9 @@ canvas{
     background-color: rgb(254, 255, 255);
     margin-left: 1060px;
     width:29.5%;
-    margin-top: -250px;
+    margin-top: -315px;
     border-radius: 10px;
-    height: 250px;
+    height: 315px;
 }
 
 .container-graph{
@@ -212,27 +212,88 @@ canvas{
     padding-top: 13px;
 }
 
-select{
-    padding: 3px;
+.medicalReportDescription{
+    color: #7a7a7a;
+    text-align: center;
+}
+
+.pdfIcon{
+    padding-right: 15px;
+    font-size:20px;
+   
+}
+
+.excelIcon{
+    padding-right: 10px;
+    font-size:20px;
+}
+
+
+.buttonPdf{
+    width: 85%;
+    height: 50px;
+    margin-left: 40px;
+    margin-top:  15px;
+    margin-bottom: 30px;
     font-family: 'Poppins', sans-serif;
     border-radius: 5px;
-    width: 30%;
-    color: #7a7a7a;
-    border-color:  #7a7a7a;
-    margin-left: 13px;
+    border: 1px solid #585CE4;
+    background:#585CE4;
+    color: white;
+    font-size: 17px;
+    text-align: center;
 }
 
-.reportIcon{
-    padding-right: 10px;
-    font-size: 22px;
-    margin-left: 15px;
-    padding-top: 50px;
+.buttonExcel{
+    width: 85%;
+    height: 50px;
+    margin-left: 40px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    border: 1px solid #585CE4;
+    background:#585CE4;
+    color: white;
+    font-size: 17px;
+    text-align: center;
+    display: block
 }
 
-.reportTitle{
-    font-size: 14px;
-    color: #7a7a7a;
+table{
+    font-size: 12px;
+    text-align: center;
+    width: 8%;
+    float: left;
+    border-collapse: collapse;
 }
+
+.company{
+    margin-left: 365px;
+}
+
+.generic{
+    margin-left:50px;
+}
+
+.tableDate{
+    margin-left:50px;
+}
+
+td, th{
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    font-size: 12px;
+}
+
+th{
+    background-color: #585CE4;
+    color: #fff;
+}
+
+.pdfStructure{
+    margin-top: 190px;
+    visibility: collapse;
+}
+
 
 .amountReport{
     font-size: 14px;

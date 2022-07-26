@@ -11,7 +11,8 @@ import { BaseChartDirective } from 'ng2-charts'; //Linea nueva
 import {ChartDataset, ChartOptions} from 'chart.js'; //Linea nueva
 import { Subscription } from 'rxjs'; //Linea nueva
 import { HttpClient } from '@angular/common/http'; //Linea nueva
-
+import { jsPDF } from 'jspdf'; //Linea nueva
+import * as XLSX from 'xlsx';
 
 
 //imports de iconos
@@ -19,12 +20,13 @@ import { faDroplet} from '@fortawesome/free-solid-svg-icons';
 import { faHeartPulse} from '@fortawesome/free-solid-svg-icons';
 import { faTemperatureHigh} from '@fortawesome/free-solid-svg-icons';
 import { faLungs } from '@fortawesome/free-solid-svg-icons';
-import { faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faStethoscope } from '@fortawesome/free-solid-svg-icons';
 import { faMapPin } from '@fortawesome/free-solid-svg-icons';
 import { faClipboard} from '@fortawesome/free-solid-svg-icons';
-import {faCakeCandles} from '@fortawesome/free-solid-svg-icons';
+import {faCakeCandles} from '@fortawesome/free-solid-svg-icons'; //Nueva linea
+import {faFilePdf} from '@fortawesome/free-solid-svg-icons'; //Nueva linea
+import {faFileCsv} from '@fortawesome/free-solid-svg-icons'; //Nueva linea
 
 /*===================================================================*/
 /*===================================================================*/
@@ -39,13 +41,20 @@ export class DashboardComponent implements OnInit , OnDestroy {
     
   //Variables para widgets
   bloodPressureArray: number[] = [];
-  bloodPressure: number;
+  bloodPressure: number = 0;
   heartRateArray: number[] = [];
-  heartRate: number;
+  heartRate: number = 0;
   temperatureArray: number[] = [];
-  temperature: number;
+  temperature: number = 0;
   oxygenArray: number[] = [];
-  oxygen: number;
+  oxygen: number = 0;
+
+
+  //Variables para reportes
+  dateArray: string[] = [];
+  hourArray: string[] = [];
+  //x: any = 0;
+
 
   //Variables con titulos
   heartRateTitle = 'Heart Rate by minute';
@@ -53,6 +62,11 @@ export class DashboardComponent implements OnInit , OnDestroy {
   heartPulseTitle = 'Heart Rate';
   temperatureTitle = 'Temperature';
   oxygenTitle = 'Blood Oxygenation';
+  reportTitle = 'Medical Reports';
+  reportDescription = 'Select a type of file to download the report';
+  buttonTitlePdf = 'Download PDF';
+  buttonTitleExcel = 'Download Excel';
+  company = 'Vitalcare';
 
   //Obtener fecha actual
   today: Date = new Date();
@@ -64,18 +78,18 @@ export class DashboardComponent implements OnInit , OnDestroy {
   heartPulseIcon = faHeartPulse;
   temperatureIcon = faTemperatureHigh; 
   oxygenIcon =  faLungs;
-  reportIcon = faFileArrowDown;
   userIcon = faUser;
   statusIcon = faStethoscope;
   locationIcon = faMapPin;
   patientIcon = faClipboard;
   yeardOldIcon = faCakeCandles;
+  pdfIcon = faFilePdf;
+  excelIcon = faFileCsv;
 
   //Estructura de grafica
   @ViewChild(BaseChartDirective) chart: BaseChartDirective;
   private sub: Subscription;
   public loadData = false;
-
 
   public chartData: ChartDataset[] = [
     {data: [], label: 'Heart Rate Value'}
@@ -95,6 +109,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
         }
       },
       y: {
+        min: 0,
         beginAtZero: true,
         grid: {
           color: '#EAECEE'
@@ -131,12 +146,12 @@ export class DashboardComponent implements OnInit , OnDestroy {
       data.map((x) => {
         this.chartData[0].data.push(x.heartRate);
         this.labels.push(x.Hora);
-        
+        this.dateArray.push(x.Fecha);
+        this.hourArray.push(x.Hora);
 
         if(x.heartRate === 136){
           this.chartData[0].backgroundColor = 'rgba(124, 218, 124, 0.993)';
         }
-
       })
       console.log(this.chartData);
       this.loadData = true;
@@ -189,6 +204,54 @@ export class DashboardComponent implements OnInit , OnDestroy {
   //Funcion para traer fecha actual
   getDate(){
     this.todayWithPipe = this.pipe.transform(Date.now(), 'dd/MM/yyyy');
+  }
+
+  //Funcion generar pdf
+  printPdf(){
+    const unit = "pt";
+    const size = "A4"; // Use A1, A2, A3 or A4
+    const orientation = "landscape"; // portrait or landscape
+    const doc = new jsPDF(orientation, unit, size);
+    doc.setFontSize(4);
+    doc.html(document.getElementById('pdfFormat'),{
+        callback: function (doc) {
+          doc.save('Historial Medico Karely Hernandez Gonsales');
+        }
+    });
+  }
+
+  //Funcion para imprimir excel
+  name = 'MedicalReport-Karely-Hernandez-Gonzales.xlsx';
+  printExcel(): void {
+    let element = document.getElementById('tableDate');
+    const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+    let element2 = document.getElementById('tableMinute');
+    const worksheet2: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element2);
+    let element3 = document.getElementById('tableBloodPressure');
+    const worksheet3: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element3);
+    let element4 = document.getElementById('tableHeartRate');
+    const worksheet4: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element4);
+    let element5 = document.getElementById('tableTemperature');
+    const worksheet5: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element5);
+    let element6 = document.getElementById('tableOxygen');
+    const worksheet6: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element6);
+    
+    const book: XLSX.WorkBook = XLSX.utils.book_new();
+    const book2: XLSX.WorkBook = XLSX.utils.book_new();
+    const book3: XLSX.WorkBook = XLSX.utils.book_new();
+    const book4: XLSX.WorkBook = XLSX.utils.book_new();
+    const book5: XLSX.WorkBook = XLSX.utils.book_new();
+    const book6: XLSX.WorkBook = XLSX.utils.book_new();
+
+    XLSX.utils.book_append_sheet(book, worksheet, 'Date');
+    XLSX.utils.book_append_sheet(book, worksheet2, 'Minute' );
+    XLSX.utils.book_append_sheet(book, worksheet3, 'Blood Pressure');
+    XLSX.utils.book_append_sheet(book, worksheet4, 'Heart Rate');
+    XLSX.utils.book_append_sheet(book, worksheet5, 'Temperature');
+    XLSX.utils.book_append_sheet(book, worksheet6, 'Oxygen' );
+
+
+    XLSX.writeFile(book, this.name);
   }
 
   //Cancela observacion

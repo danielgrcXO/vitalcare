@@ -54,7 +54,7 @@
     <p class="titleGraph"> {{heartRateTitle}}</p>
     <p class="titleDate"> {{todayWithPipe}}</p>
     <div style="display: block">
-        <canvas  *ngIf="this.loadData" baseChart height="110" 
+        <canvas  *ngIf="this.loadData"  baseChart height="110" 
           [datasets]="chartData"
           [options]="options"
           [labels]="labels"
@@ -65,26 +65,10 @@
 
 <!--Div de los reportes -->
 <div class="reports">
-    <p class="medicalReports">Medical Reports</p>
-
-    <Select name = "reports">
-        <Option  selected="true" value = "Select a date" disabled="disabled">Select a date</Option>
-        <Option value = "option1"> 12/06/2022 </Option>
-        <Option value = "option2"> 13/06/2022 </Option>
-        <Option value = "opción3"> 14/06/2022 </Option>
-        <Option value = "opción4"> 15/06/2022 </Option>
-        <Option value = "opción5"> 16/06/2022 </Option>
-        <Option value = "opción6"> 17/06/2022 </Option>
-    </Select>
-
-    <p class="reportTitle"><fa-icon class="reportIcon" [icon]="reportIcon"></fa-icon>  HeartRate-Oxygen.pdf  (12-06-2022)</p> 
-    <p class="amountReport">2Mb</p>
-
-    <p class="reportTitle"><fa-icon class="reportIcon" [icon]="reportIcon"></fa-icon>  Blood Pressure.pdf  (12-06-2022)</p> 
-    <p class="amountReport">2Mb</p>
-
-    <p class="reportTitle"><fa-icon class="reportIcon" [icon]="reportIcon"></fa-icon>  Temperature.pdf  (12-06-2022)</p> 
-    <p class="amountReport">2Mb</p>
+    <p class="medicalReports">{{ reportTitle }}</p>
+    <p class="medicalReportDescription">{{ reportDescription }}</p>
+    <button type="button" class="buttonPdf" (click)="printPdf()"><fa-icon class="pdfIcon" [icon]="pdfIcon"></fa-icon>{{buttonTitlePdf}} </button>
+    <button type="button" class="buttonExcel" (click)="printExcel()"><fa-icon class="excelIcon" [icon]="excelIcon"></fa-icon> {{buttonTitleExcel}}</button>
 </div>
 
 <!--Div de los pacientes en menu principal-->
@@ -94,6 +78,92 @@
     <p class="patient2"><fa-icon class="patientIcon2" [icon]="patientIcon"></fa-icon>Ivan Villanueva Sanchez</p>
     <p class="patient3"><fa-icon class="patientIcon3" [icon]="patientIcon"></fa-icon>Claudia Angulo Garcia</p>
     <p class="patient4"><fa-icon class="patientIcon4" [icon]="patientIcon"></fa-icon>Marina Guarneros Sanchez</p>
+</div>
+
+
+<!--Div con la estructura del pdf y excel-->
+<div class="pdfStructure">
+    <form id="pdfFormat">
+        <div>
+        <div id="medicalInfo">
+          <p class="company"> {{company}}</p>
+          <p class="generic">Patient: </p>
+          <p class="generic">Status: </p>
+        </div>
+          <table class="tableDate" id="tableDate">
+            <thead>
+              <tr>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let date of dateArray">
+                <td class="x"> {{date}} </td>
+              </tr>
+            </tbody>
+          </table>
+          <table id="tableMinute">
+            <thead>
+              <tr>
+                <th>Minute</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let minute of hourArray">
+                <td class="x"> {{minute}} </td>
+              </tr>
+            </tbody>
+          </table>
+          <table id="tableBloodPressure">
+            <thead>
+              <tr>
+                <th>Blood Pressure</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let blood of bloodPressureArray">
+                <td class="x"> {{blood}} </td>
+              </tr>
+            </tbody>
+          </table>
+          <table id="tableHeartRate">
+            <thead>
+              <tr>
+                <th>Heart Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let heartRate of heartRateArray">
+                <td class="x"> {{heartRate}} </td>
+              </tr>
+            </tbody>
+          </table>
+          <table id="tableTemperature">
+            <thead>
+              <tr>
+                <th>Temperature</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let temperature of temperatureArray">
+                <td class="x"> {{temperature}} </td>
+              </tr>
+            </tbody>
+          </table>
+          <table id="tableOxygen">
+            <thead>
+              <tr>
+                <th>Oxygen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let oxygen of oxygenArray">
+                <td class="x"> {{oxygen}} </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </form>
 </div>
 
 
