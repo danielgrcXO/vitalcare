@@ -1,18 +1,19 @@
 //imports globales
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { hearRateValues } from '../models/hearRateInterface'; //Nueva Linea
-import { bloodPressureValues} from '../models/bloodPressureInterface' //Nueva Linea
-import { temperatureValues} from '../models/temperatureInterface'; //Nueva Linea
-import { oxygenValues} from '../models/oxygenInterface' //Nueva linea
-import { DatePipe } from '@angular/common'; // Nueva linea
+import { hearRateValues } from '../models/hearRateInterface'; 
+import { bloodPressureValues} from '../models/bloodPressureInterface' 
+import { temperatureValues} from '../models/temperatureInterface'; 
+import { oxygenValues} from '../models/oxygenInterface'
+import { DatePipe } from '@angular/common'; 
 
 //imports de librerias utilizadas
-import { BaseChartDirective } from 'ng2-charts'; //Linea nueva
-import {ChartDataset, ChartOptions} from 'chart.js'; //Linea nueva
-import { Subscription } from 'rxjs'; //Linea nueva
-import { HttpClient } from '@angular/common/http'; //Linea nueva
-import { jsPDF } from 'jspdf'; //Linea nueva
+import { BaseChartDirective } from 'ng2-charts'; 
+import {ChartDataset, ChartOptions} from 'chart.js';
+import { Subscription } from 'rxjs'; 
+import { HttpClient } from '@angular/common/http';
+import { jsPDF } from 'jspdf'; 
 import * as XLSX from 'xlsx';
+import { DomSanitizer} from '@angular/platform-browser';
 
 
 //imports de iconos
@@ -24,9 +25,9 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faStethoscope } from '@fortawesome/free-solid-svg-icons';
 import { faMapPin } from '@fortawesome/free-solid-svg-icons';
 import { faClipboard} from '@fortawesome/free-solid-svg-icons';
-import {faCakeCandles} from '@fortawesome/free-solid-svg-icons'; //Nueva linea
-import {faFilePdf} from '@fortawesome/free-solid-svg-icons'; //Nueva linea
-import {faFileCsv} from '@fortawesome/free-solid-svg-icons'; //Nueva linea
+import {faCakeCandles} from '@fortawesome/free-solid-svg-icons'; 
+import {faFilePdf} from '@fortawesome/free-solid-svg-icons'; 
+import {faFileCsv} from '@fortawesome/free-solid-svg-icons'; 
 
 /*===================================================================*/
 /*===================================================================*/
@@ -49,12 +50,9 @@ export class DashboardComponent implements OnInit , OnDestroy {
   oxygenArray: number[] = [];
   oxygen: number = 0;
 
-
   //Variables para reportes
   dateArray: string[] = [];
   hourArray: string[] = [];
-  //x: any = 0;
-
 
   //Variables con titulos
   heartRateTitle = 'Heart Rate by minute';
@@ -67,6 +65,13 @@ export class DashboardComponent implements OnInit , OnDestroy {
   buttonTitlePdf = 'Download PDF';
   buttonTitleExcel = 'Download Excel';
   company = 'Vitalcare';
+
+  //endpoints variables
+  dashboardUrl: string = 'http://localhost:3050/pacient/heartRate';
+  bloodPressureUrl : string = 'http://localhost:3050/pacient/bloodPressure';
+  heartRateUrl : string = 'http://localhost:3050/pacient/heartrate';
+  temperatureUrl : string = 'http://localhost:3050/pacient/temperature';
+  oxygenUrl : string = 'http://localhost:3050/pacient/oxygen';
 
   //Obtener fecha actual
   today: Date = new Date();
@@ -122,10 +127,36 @@ export class DashboardComponent implements OnInit , OnDestroy {
   };
 
   //Constructor que inyecta el http para peticiones
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer) {
+    //sanitizar endpoints
+     console.log(this.sanitizer.bypassSecurityTrustResourceUrl(this.dashboardUrl));
+     console.log(this.sanitizer.bypassSecurityTrustResourceUrl(this.bloodPressureUrl));
+     console.log(this.sanitizer.bypassSecurityTrustResourceUrl(this.heartRateUrl));
+     console.log(this.sanitizer.bypassSecurityTrustResourceUrl(this.temperatureUrl));
+     console.log(this.sanitizer.bypassSecurityTrustResourceUrl(this.oxygenUrl));
+
+     //Sanitizar variables que se colocan en html
+     console.log(this.sanitizer.bypassSecurityTrustHtml(this.heartRateTitle));
+     console.log(this.sanitizer.bypassSecurityTrustHtml(this.bloodPressureTitle));
+     console.log(this.sanitizer.bypassSecurityTrustHtml(this.heartPulseTitle));
+     console.log(this.sanitizer.bypassSecurityTrustHtml(this.temperatureTitle));
+     console.log(this.sanitizer.bypassSecurityTrustHtml(this.oxygenTitle));
+     console.log(this.sanitizer.bypassSecurityTrustHtml(this.reportTitle));
+     console.log(this.sanitizer.bypassSecurityTrustHtml(this.reportDescription));
+     console.log(this.sanitizer.bypassSecurityTrustHtml(this.buttonTitlePdf));
+     console.log(this.sanitizer.bypassSecurityTrustHtml(this.buttonTitleExcel));
+     console.log(this.sanitizer.bypassSecurityTrustHtml(this.company));
+     
+     //Sanitizando variables de widgets
+     console.log(this.sanitizer.bypassSecurityTrustHtml(String(this.bloodPressure)));
+     console.log(this.sanitizer.bypassSecurityTrustHtml(String(this.heartRate)));
+     console.log(this.sanitizer.bypassSecurityTrustHtml(String(this.temperature)));
+     console.log(this.sanitizer.bypassSecurityTrustHtml(String(this.oxygen)));
+    }
 
 
   ngOnInit(): void {
+
     //recargar datos de component dashboard
     setInterval(() =>{
       location.reload();
@@ -141,7 +172,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
 
   //Funcion que llama a los datos heartrate a grafica
   getData(){
-    this.sub = this.http.get<hearRateValues[]>('http://localhost:3050/pacient/heartRate')
+    this.sub = this.http.get<hearRateValues[]>(this.dashboardUrl)
     .subscribe((data: hearRateValues[]) => {
       data.map((x) => {
         this.chartData[0].data.push(x.heartRate);
@@ -160,7 +191,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
 
   //Funcion que llama  datos de bloodPressure
   getBloodPressure(){
-    this.sub = this.http.get<bloodPressureValues[]>('http://localhost:3050/pacient/bloodPressure')
+    this.sub = this.http.get<bloodPressureValues[]>(this.bloodPressureUrl)
     .subscribe((data: bloodPressureValues[]) => {
         data.map((i) => {
           this.bloodPressureArray.push(i.bloodPressure);
@@ -170,7 +201,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
   }
 
   getHeartRate(){
-    this.sub = this.http.get<hearRateValues[]>('http://localhost:3050/pacient/heartrate')
+    this.sub = this.http.get<hearRateValues[]>(this.heartRateUrl)
     .subscribe((data: hearRateValues[]) => {
         data.map((z) => {
           this.heartRateArray.push(z.heartRate);
@@ -181,7 +212,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
 
   //Funcion que llama datos de temperature
   getTemperature(){
-    this.sub = this.http.get<temperatureValues[]>('http://localhost:3050/pacient/temperature')
+    this.sub = this.http.get<temperatureValues[]>(this.temperatureUrl)
     .subscribe((data: temperatureValues[]) => {
         data.map((v) => {
           this.temperatureArray.push(v.temperature);
@@ -192,7 +223,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
 
   //Funcion que llama datos oxygen
   getOxygen(){
-    this.sub = this.http.get<oxygenValues[]>('http://localhost:3050/pacient/oxygen')
+    this.sub = this.http.get<oxygenValues[]>(this.oxygenUrl)
     .subscribe((data: oxygenValues[]) => {
         data.map((q) => {
           this.oxygenArray.push(q.oxygen);

@@ -1,6 +1,10 @@
 //imports globales
 import { Component, OnInit } from '@angular/core';
 
+
+//Imports de librerias
+import { DomSanitizer} from '@angular/platform-browser';
+
 //imports de iconos
 import {faHeartPulse} from '@fortawesome/free-solid-svg-icons';
 
@@ -21,7 +25,11 @@ export class HomeComponent implements OnInit {
   //iconos
   HeartIcon = faHeartPulse;
 
-  constructor() { }
+  
+  constructor(private sanitizer: DomSanitizer) { 
+    console.log(this.sanitizer.bypassSecurityTrustHtml(this.mainTitle));
+    console.log(this.sanitizer.bypassSecurityTrustHtml(this.mainDescription));
+  }
 
   ngOnInit(): void {
   }
