@@ -7,6 +7,7 @@ import { Router} from '@angular/router';
 import {faHouse} from '@fortawesome/free-solid-svg-icons';
 import {faChartLine} from '@fortawesome/free-solid-svg-icons';
 import {faHospitalUser} from '@fortawesome/free-solid-svg-icons';
+import {faCapsules} from '@fortawesome/free-solid-svg-icons';
 
 /*===================================================================*/
 /*===================================================================*/
@@ -29,6 +30,7 @@ export class AppComponent {
   HomeOption = 'Home';
   DashboardOption = 'Dashboard';
   patientLocationOption = "Patient's Location";
+  patientMedicine = "Patient's Medicine";
   footer = 'VitalCare®';
 
   //Iconos del menu principal
@@ -36,12 +38,14 @@ export class AppComponent {
   HomeIcon = faHouse;
   ChartIcon = faChartLine;
   PatientIcon = faHospitalUser; 
+  patientMedicineIcon= faCapsules;
 
  
   //Funciones para redirigir a componentes
   goHomePage(){ this.router.navigate(['/home']);}
   goDashboardPage(){ this.router.navigate(['/dashboard'])}
   goPatientLocation(){ this.router.navigate(['/patientLocation']);}
+  goPatientMedicine(){ this.router.navigate(['/patientMedicine']);}
 }
 
 

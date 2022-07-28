@@ -15,18 +15,20 @@ import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
 import { PatientComponent } from './patient/patient.component';
 import { NewComponent } from './patient/new/new.component';
+import { PatientMedicineComponent } from './patientMedicine/patientMedicine.component';
 
 /*===================================================================*/
 /*===================================================================*/
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     HomeComponent,
     DashboardComponent,
     PatientComponent,
-    NewComponent
-  ],
+    NewComponent,
+      PatientMedicineComponent
+   ],
   imports: [
     BrowserModule,
     FontAwesomeModule,

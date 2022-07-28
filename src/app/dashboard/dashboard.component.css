@@ -309,6 +309,13 @@ th{
     color: #585CE4;
 }
 
+.bedIcon{
+    font-size: 27px;
+    margin-left: 8px;
+    padding-right: 13px;
+    color: #585CE4;
+}
+
 .patientName{
     font-weight: bold;
     font-size: 18px;
@@ -370,12 +377,14 @@ th{
     margin-left: 5px;
 }
 
+
 .patientIcon{
-    color:rgb(45, 189, 53);
+   /* color:rgb(45, 189, 53); */
     padding-right: 10px;
     font-size: 22px;
     margin-left: 15px;
 }
+
 
 .patientIcon2{
     color:rgb(189, 74, 45);

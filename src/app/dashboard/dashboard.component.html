@@ -1,24 +1,24 @@
 <!--Div del header-->
 <div class="header">
-    <p class="titleHeader">VitalCare®</p>
+    <p class="titleHeader">{{headerTitle}}</p>
 </div>
 
 <!--Div del mensaje de bienvenida-->
 <div class="welcome-container">
-    <p class="patientName"><fa-icon class="userIcon"[icon]="userIcon"> </fa-icon>Karely Hernandez Gonzales</p>
-    <p class="patientStatus"><fa-icon class="userIcon"[icon]="statusIcon"> </fa-icon>Status: <a class="Normal">Normal</a></p>
+    <p class="patientName"><fa-icon class="userIcon"[icon]="userIcon"> </fa-icon>{{patientName}}</p>
+    <p class="patientStatus"><fa-icon class="userIcon"[icon]="statusIcon"> </fa-icon>{{statusTitle}}<a class="Normal">{{patientStatus}}</a></p>
 </div>
 
 <div class="container-location">
-    <p class="patientRoom"><fa-icon class="userIcon"[icon]="locationIcon"> </fa-icon>Location: <a class="Normal">Room 1</a></p>
-    <p class="patientYearsOld"><fa-icon class="userIcon"[icon]="yeardOldIcon"> </fa-icon>Age : 24</p>
+    <p class="patientRoom"><fa-icon class="userIcon"[icon]="locationIcon"> </fa-icon>{{location}} <a class="Normal">{{'Room ' + locationValue}}</a></p>
+    <p class="patientYearsOld"><fa-icon class="bedIcon"[icon]="bedIcon"> </fa-icon>{{bedNumber}} {{bedNumberValue}}</p>
 </div>
 
 
 <!--Div de la informacion del paciente-->
 <div class="patientInfo-container">
-    <p class="bloodType">Blood Type</p>
-    <a class="bloodTypeIndicador">A+</a>
+    <p class="bloodType">{{bloodTypeTitle}}</p>
+    <a class="bloodTypeIndicador">{{bloodTypeValue}}</a>
 </div>
 
 <!--Div de bloodPressure-->
@@ -46,7 +46,7 @@
 <div class="oxygen">
    <fa-icon class="oxygenIcon" [icon]="oxygenIcon"></fa-icon>
    <p class="oxygenTitle">{{oxygenTitle}}</p>
-   <p class="oxygen-value">{{oxygen + ' ' + 'Hg'}}</p>
+   <p class="oxygen-value">{{oxygen + ' ' + '%'}}</p>
 </div>
 
 <!--Div de la grafica-->
@@ -73,11 +73,11 @@
 
 <!--Div de los pacientes en menu principal-->
 <div class="patientMenu">
-    <p class="titlePatientStatus">Patient's Status</p>
-    <p class="patient1"><fa-icon class="patientIcon" [icon]="patientIcon"></fa-icon>Karely Hernandez Gonzales</p>
-    <p class="patient2"><fa-icon class="patientIcon2" [icon]="patientIcon"></fa-icon>Ivan Villanueva Sanchez</p>
-    <p class="patient3"><fa-icon class="patientIcon3" [icon]="patientIcon"></fa-icon>Claudia Angulo Garcia</p>
-    <p class="patient4"><fa-icon class="patientIcon4" [icon]="patientIcon"></fa-icon>Marina Guarneros Sanchez</p>
+    <p class="titlePatientStatus">{{patientStatusMenu}}</p>
+    <p class="patient1"><fa-icon class="patientIcon" [icon]="patientIcon"></fa-icon>{{patientName}}</p>
+  <!--  <p class="patient2"><fa-icon class="patientIcon2" [icon]="patientIcon"></fa-icon>Ivan Villanueva Sanchez</p>  -->
+  <!--  <p class="patient3"><fa-icon class="patientIcon3" [icon]="patientIcon"></fa-icon>Claudia Angulo Garcia</p>    -->
+  <!--  <p class="patient4"><fa-icon class="patientIcon4" [icon]="patientIcon"></fa-icon>Marina Guarneros Sanchez</p> -->
 </div>
 
 
@@ -87,8 +87,8 @@
         <div>
         <div id="medicalInfo">
           <p class="company"> {{company}}</p>
-          <p class="generic">Patient: </p>
-          <p class="generic">Status: </p>
+          <p class="generic">Patient: {{patientName}} </p>
+          <p class="generic">Status: {{patientStatus}}</p>
         </div>
           <table class="tableDate" id="tableDate">
             <thead>

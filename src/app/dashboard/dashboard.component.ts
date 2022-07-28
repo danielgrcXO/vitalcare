@@ -4,6 +4,7 @@ import { hearRateValues } from '../models/hearRateInterface';
 import { bloodPressureValues} from '../models/bloodPressureInterface' 
 import { temperatureValues} from '../models/temperatureInterface'; 
 import { oxygenValues} from '../models/oxygenInterface'
+import {patientInformation, patientStatus} from '../models/patientInterface';
 import { DatePipe } from '@angular/common'; 
 
 //imports de librerias utilizadas
@@ -14,7 +15,6 @@ import { HttpClient } from '@angular/common/http';
 import { jsPDF } from 'jspdf'; 
 import * as XLSX from 'xlsx';
 import { DomSanitizer} from '@angular/platform-browser';
-
 
 //imports de iconos
 import { faDroplet} from '@fortawesome/free-solid-svg-icons';
@@ -28,6 +28,7 @@ import { faClipboard} from '@fortawesome/free-solid-svg-icons';
 import {faCakeCandles} from '@fortawesome/free-solid-svg-icons'; 
 import {faFilePdf} from '@fortawesome/free-solid-svg-icons'; 
 import {faFileCsv} from '@fortawesome/free-solid-svg-icons'; 
+import { faBedPulse } from '@fortawesome/free-solid-svg-icons';
 
 /*===================================================================*/
 /*===================================================================*/
@@ -49,12 +50,24 @@ export class DashboardComponent implements OnInit , OnDestroy {
   temperature: number = 0;
   oxygenArray: number[] = [];
   oxygen: number = 0;
-
+  patientNameArray: string[] = [];
+  patientName: string;
+  locationArray: number[] = [];
+  locationValue : number;
+  bedNumberArray: number[] = [];
+  bedNumberValue: number;
+  bloodTypeArray: string[] = [];
+  bloodTypeValue: string;
+  patientStatusArray: string[] = [];
+  patientStatus: string;
+  
   //Variables para reportes
   dateArray: string[] = [];
   hourArray: string[] = [];
+  
 
   //Variables con titulos
+  headerTitle = 'VitalCare®';
   heartRateTitle = 'Heart Rate by minute';
   bloodPressureTitle = 'Blood Pressure';
   heartPulseTitle = 'Heart Rate';
@@ -65,6 +78,11 @@ export class DashboardComponent implements OnInit , OnDestroy {
   buttonTitlePdf = 'Download PDF';
   buttonTitleExcel = 'Download Excel';
   company = 'Vitalcare';
+  statusTitle = 'Status: ';
+  location = 'Location:';
+  bedNumber = 'Bed Number:';
+  bloodTypeTitle = 'Blood Type';
+  patientStatusMenu = "Patient's Status";
 
   //endpoints variables
   dashboardUrl: string = 'http://localhost:3050/pacient/heartRate';
@@ -72,6 +90,8 @@ export class DashboardComponent implements OnInit , OnDestroy {
   heartRateUrl : string = 'http://localhost:3050/pacient/heartrate';
   temperatureUrl : string = 'http://localhost:3050/pacient/temperature';
   oxygenUrl : string = 'http://localhost:3050/pacient/oxygen';
+  patientInformationUrl: string = 'http://localhost:3050/pacient/patientInfo';
+  patientStatusUrl : string = 'http://localhost:3050/pacient/patientStatus';
 
   //Obtener fecha actual
   today: Date = new Date();
@@ -90,6 +110,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
   yeardOldIcon = faCakeCandles;
   pdfIcon = faFilePdf;
   excelIcon = faFileCsv;
+  bedIcon = faBedPulse;
 
   //Estructura de grafica
   @ViewChild(BaseChartDirective) chart: BaseChartDirective;
@@ -129,29 +150,40 @@ export class DashboardComponent implements OnInit , OnDestroy {
   //Constructor que inyecta el http para peticiones
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) {
     //sanitizar endpoints
-     console.log(this.sanitizer.bypassSecurityTrustResourceUrl(this.dashboardUrl));
-     console.log(this.sanitizer.bypassSecurityTrustResourceUrl(this.bloodPressureUrl));
-     console.log(this.sanitizer.bypassSecurityTrustResourceUrl(this.heartRateUrl));
-     console.log(this.sanitizer.bypassSecurityTrustResourceUrl(this.temperatureUrl));
-     console.log(this.sanitizer.bypassSecurityTrustResourceUrl(this.oxygenUrl));
+     this.sanitizer.bypassSecurityTrustResourceUrl(this.dashboardUrl);
+     this.sanitizer.bypassSecurityTrustResourceUrl(this.bloodPressureUrl);
+     this.sanitizer.bypassSecurityTrustResourceUrl(this.heartRateUrl);
+     this.sanitizer.bypassSecurityTrustResourceUrl(this.temperatureUrl);
+     this.sanitizer.bypassSecurityTrustResourceUrl(this.oxygenUrl);
+     this.sanitizer.bypassSecurityTrustResourceUrl(this.patientInformationUrl);
+     this.sanitizer.bypassSecurityTrustResourceUrl(this.patientStatusUrl);
 
      //Sanitizar variables que se colocan en html
-     console.log(this.sanitizer.bypassSecurityTrustHtml(this.heartRateTitle));
-     console.log(this.sanitizer.bypassSecurityTrustHtml(this.bloodPressureTitle));
-     console.log(this.sanitizer.bypassSecurityTrustHtml(this.heartPulseTitle));
-     console.log(this.sanitizer.bypassSecurityTrustHtml(this.temperatureTitle));
-     console.log(this.sanitizer.bypassSecurityTrustHtml(this.oxygenTitle));
-     console.log(this.sanitizer.bypassSecurityTrustHtml(this.reportTitle));
-     console.log(this.sanitizer.bypassSecurityTrustHtml(this.reportDescription));
-     console.log(this.sanitizer.bypassSecurityTrustHtml(this.buttonTitlePdf));
-     console.log(this.sanitizer.bypassSecurityTrustHtml(this.buttonTitleExcel));
-     console.log(this.sanitizer.bypassSecurityTrustHtml(this.company));
+     this.sanitizer.bypassSecurityTrustHtml(this.headerTitle);
+     this.sanitizer.bypassSecurityTrustHtml(this.statusTitle);
+     this.sanitizer.bypassSecurityTrustHtml(this.location);
+     this.sanitizer.bypassSecurityTrustHtml(this.bedNumber);
+     this.sanitizer.bypassSecurityTrustHtml(this.bloodTypeTitle);
+     this.sanitizer.bypassSecurityTrustHtml(this.heartRateTitle);
+     this.sanitizer.bypassSecurityTrustHtml(this.bloodPressureTitle);
+     this.sanitizer.bypassSecurityTrustHtml(this.heartPulseTitle);
+     this.sanitizer.bypassSecurityTrustHtml(this.temperatureTitle);
+     this.sanitizer.bypassSecurityTrustHtml(this.oxygenTitle);
+     this.sanitizer.bypassSecurityTrustHtml(this.reportTitle);
+     this.sanitizer.bypassSecurityTrustHtml(this.reportDescription);
+     this.sanitizer.bypassSecurityTrustHtml(this.buttonTitlePdf);
+     this.sanitizer.bypassSecurityTrustHtml(this.buttonTitleExcel);
+     this.sanitizer.bypassSecurityTrustHtml(this.company);
      
      //Sanitizando variables de widgets
-     console.log(this.sanitizer.bypassSecurityTrustHtml(String(this.bloodPressure)));
-     console.log(this.sanitizer.bypassSecurityTrustHtml(String(this.heartRate)));
-     console.log(this.sanitizer.bypassSecurityTrustHtml(String(this.temperature)));
-     console.log(this.sanitizer.bypassSecurityTrustHtml(String(this.oxygen)));
+     this.sanitizer.bypassSecurityTrustHtml(String(this.bloodPressure));
+     this.sanitizer.bypassSecurityTrustHtml(String(this.heartRate));
+     this.sanitizer.bypassSecurityTrustHtml(String(this.temperature));
+     this.sanitizer.bypassSecurityTrustHtml(String(this.oxygen));
+     this.sanitizer.bypassSecurityTrustHtml(this.patientName);
+     this.sanitizer.bypassSecurityTrustHtml(String(this.locationValue));
+     this.sanitizer.bypassSecurityTrustHtml(String(this.bedNumberValue));
+     this.sanitizer.bypassSecurityTrustHtml(this.bloodTypeValue);
     }
 
 
@@ -168,6 +200,8 @@ export class DashboardComponent implements OnInit , OnDestroy {
     this.getHeartRate();
     this.getTemperature();
     this.getOxygen();
+    this.getPatientInformation();
+    this.getStatus();
   }
 
   //Funcion que llama a los datos heartrate a grafica
@@ -210,6 +244,8 @@ export class DashboardComponent implements OnInit , OnDestroy {
     });
   }
 
+
+
   //Funcion que llama datos de temperature
   getTemperature(){
     this.sub = this.http.get<temperatureValues[]>(this.temperatureUrl)
@@ -229,6 +265,32 @@ export class DashboardComponent implements OnInit , OnDestroy {
           this.oxygenArray.push(q.oxygen);
         });
       this.oxygen = this.oxygenArray[this.oxygenArray.length - 1];
+    });
+  }
+
+  getPatientInformation(){
+    this.sub = this.http.get<patientInformation[]>(this.patientInformationUrl)
+    .subscribe((data: patientInformation[]) => {
+        data.map((z) => {
+          this.patientNameArray.push(z.name);
+          this.locationArray.push(z.roomNumber);
+          this.bedNumberArray.push(z.bedNumber);
+          this.bloodTypeArray.push(z.bloodType);
+        });
+      this.patientName = this.patientNameArray[0];
+      this.locationValue = this.locationArray[0];
+      this.bedNumberValue = this.bedNumberArray[0];
+      this.bloodTypeValue = this.bloodTypeArray[0];
+    });
+  }
+
+  getStatus(){
+    this.sub = this.http.get<patientStatus[]>(this.patientStatusUrl)
+    .subscribe((data: patientStatus[]) => {
+        data.map((z) => {
+          this.patientStatusArray.push(z.patientStatus);
+        });
+        this.patientStatus = this.patientStatusArray[this.patientStatusArray.length - 1];
     });
   }
 
