@@ -118,7 +118,15 @@ canvas{
 }
 
 .bloodPressureIcon{
-    color: #585CE4;
+    color: #e45866;
+    font-size: 65px;
+    position: relative;
+    top: 25px;
+    left: 200px;
+}
+
+.bloodPressureIcon-good{
+    color: rgba(124, 218, 124, 0.993);
     font-size: 65px;
     position: relative;
     top: 25px;
@@ -135,12 +143,29 @@ canvas{
     margin-left: 20px;
     margin-top: -1px;
     font-size: 23px;
+    /* color: rgba(124, 218, 124, 0.993);*/
+    color: #e45866;
+    font-weight: bold;
+}
+
+.bloodPressure-value-good{
+    margin-left: 20px;
+    margin-top: -1px;
+    font-size: 23px;
     color: rgba(124, 218, 124, 0.993);
     font-weight: bold;
 }
 
 .heartPulseIcon{
-    color: #585CE4;
+    color: #e45866;
+    font-size: 65px;
+    position: relative;
+    top: 25px;
+    left: 185px;
+}
+
+.heartPulseIcon-good{
+    color: rgba(124, 218, 124, 0.993);
     font-size: 65px;
     position: relative;
     top: 25px;
@@ -157,12 +182,29 @@ canvas{
     margin-left: 20px;
     margin-top: -1px;
     font-size: 27px;
+   /* color: rgba(124, 218, 124, 0.993);*/
+    color: #e45866;
+    font-weight: bold;
+}
+
+.heartRate-value-good{
+    margin-left: 20px;
+    margin-top: -1px;
+    font-size: 27px;
     color: rgba(124, 218, 124, 0.993);
     font-weight: bold;
 }
 
 .temperatureIcon{
-    color: #585CE4;
+    color: #e45866;
+    font-size: 65px;
+    position: relative;
+    top: 25px;
+    left: 190px;
+}
+
+.temperatureIcon-good{
+    color: rgba(124, 218, 124, 0.993);
     font-size: 65px;
     position: relative;
     top: 25px;
@@ -179,12 +221,29 @@ canvas{
     margin-left: 20px;
     margin-top: -1px;
     font-size: 27px;
+    /*color: rgba(124, 218, 124, 0.993);*/
+    color: #e45866;
+    font-weight: bold;
+}
+
+.temperature-value-good{
+    margin-left: 20px;
+    margin-top: -1px;
+    font-size: 27px;
     color: rgba(124, 218, 124, 0.993);
     font-weight: bold;
 }
 
 .oxygenIcon{
-    color: #585CE4;
+    color: #e45866;
+    font-size: 60px;
+    position: relative;
+    top: 25px;
+    left: 165px;
+}
+
+.oxygenIcon-good{
+    color: rgba(124, 218, 124, 0.993);
     font-size: 60px;
     position: relative;
     top: 25px;
@@ -198,6 +257,15 @@ canvas{
 }
 
 .oxygen-value{
+    margin-left: 20px;
+    margin-top: -1px;
+    font-size: 27px;
+    /*color: rgba(124, 218, 124, 0.993);*/
+    color: #e45866;
+    font-weight: bold;
+}
+
+.oxygen-value-good{
     margin-left: 20px;
     margin-top: -1px;
     font-size: 27px;
@@ -274,6 +342,16 @@ table{
     margin-left:50px;
 }
 
+.generic-location{
+    margin-left:550px;
+    margin-top: -80px;
+}
+
+.generic-bed{
+    margin-left:550px;
+}
+
+
 .tableDate{
     margin-left:50px;
 }
@@ -317,48 +395,48 @@ th{
 }
 
 .patientName{
-    font-weight: bold;
     font-size: 18px;
-    color: #7a7a7aa2;
+    color: #7a7a7ae2;
     margin-top: -20px;
     padding-top: 15px;
 }
 
 .patientStatus{
-    font-weight: bold;
     margin-left: -6px;
     font-size: 18px;
-    color: #7a7a7aa8;
+    color: #7a7a7ae2;
     margin-top: -6px;
     padding-top: 10px;
 }
 
 .Normal{
+   /* color: rgba(124, 218, 124, 0.993);*/
+   color: #e45866;
+}
+
+.normal-good{
     color: rgba(124, 218, 124, 0.993);
 }
 
 .patientRoom{
-    font-weight: bold;
     margin-left: 10px;
     font-size: 18px;
-    color: #7a7a7aa1;
+    color: #7a7a7ae2;
     margin-top: -125px;
     padding-top: 15px;
 }
 
 .patientYearsOld{
-    font-weight: bold;
     margin-left: 8px;
     font-size: 18px;
-    color: #7a7a7aa1;
+    color: #7a7a7ae2;
     margin-top: -10px;
     padding-top: 10px;
 }
 
 .bloodType{
-    font-weight: bold;
     font-size: 18px;
-    color: #7a7a7aa1;
+    color: #7a7a7ae2;
     padding-top: 10px;
     padding-left: 30px;
 }
@@ -380,10 +458,19 @@ th{
 
 .patientIcon{
    /* color:rgb(45, 189, 53); */
+    color: #e45866;
     padding-right: 10px;
     font-size: 22px;
     margin-left: 15px;
 }
+
+.patientIcon-good{
+     color:rgb(45, 189, 53);
+     padding-right: 10px;
+     font-size: 22px;
+     margin-left: 15px;
+ }
+
 
 
 .patientIcon2{

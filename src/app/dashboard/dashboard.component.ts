@@ -1,5 +1,5 @@
 //imports globales
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, IterableDiffers } from '@angular/core';
 import { hearRateValues } from '../models/hearRateInterface'; 
 import { bloodPressureValues} from '../models/bloodPressureInterface' 
 import { temperatureValues} from '../models/temperatureInterface'; 
@@ -29,6 +29,7 @@ import {faCakeCandles} from '@fortawesome/free-solid-svg-icons';
 import {faFilePdf} from '@fortawesome/free-solid-svg-icons'; 
 import {faFileCsv} from '@fortawesome/free-solid-svg-icons'; 
 import { faBedPulse } from '@fortawesome/free-solid-svg-icons';
+import { faThemeisle } from '@fortawesome/free-brands-svg-icons';
 
 /*===================================================================*/
 /*===================================================================*/
@@ -147,6 +148,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
     }
   };
 
+ 
   //Constructor que inyecta el http para peticiones
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) {
     //sanitizar endpoints
@@ -214,12 +216,16 @@ export class DashboardComponent implements OnInit , OnDestroy {
         this.dateArray.push(x.Fecha);
         this.hourArray.push(x.Hora);
 
-        if(x.heartRate === 136){
-          this.chartData[0].backgroundColor = 'rgba(124, 218, 124, 0.993)';
+        if(x.heartRate > 59 && x.heartRate < 151) {
+          this.chartData[0].backgroundColor  = 'rgb(45, 189, 53)';
+        }else{
+          this.chartData[0].backgroundColor  = '#e45866';
         }
+
       })
       console.log(this.chartData);
       this.loadData = true;
+     
     });
   }
 
@@ -231,6 +237,10 @@ export class DashboardComponent implements OnInit , OnDestroy {
           this.bloodPressureArray.push(i.bloodPressure);
         });
       this.bloodPressure = this.bloodPressureArray[this.bloodPressureArray.length - 1];
+      if(this.bloodPressure > 109 && this.bloodPressure < 116){
+        document.getElementById("bloodPressure-value").setAttribute("class","bloodPressure-value-good");
+        document.getElementById("bloodPressureIcon").setAttribute("class","bloodPressureIcon-good");
+      }
     });
   }
 
@@ -241,10 +251,12 @@ export class DashboardComponent implements OnInit , OnDestroy {
           this.heartRateArray.push(z.heartRate);
         });
       this.heartRate = this.heartRateArray[this.heartRateArray.length - 1];
+      if(this.heartRate > 59 && this.heartRate < 151){
+        document.getElementById("heartPulseIcon").setAttribute("class","heartPulseIcon-good");
+        document.getElementById("heartRate-value").setAttribute("class","heartRate-value-good");
+      }
     });
   }
-
-
 
   //Funcion que llama datos de temperature
   getTemperature(){
@@ -254,6 +266,10 @@ export class DashboardComponent implements OnInit , OnDestroy {
           this.temperatureArray.push(v.temperature);
         });
       this.temperature = this.temperatureArray[this.temperatureArray.length - 1];
+      if(this.temperature > 95 && this.temperature < 100){
+        document.getElementById("temperatureIcon").setAttribute("class","temperatureIcon-good");
+        document.getElementById("temperature-value").setAttribute("class","temperature-value-good");
+      }
     });
   }
 
@@ -265,6 +281,10 @@ export class DashboardComponent implements OnInit , OnDestroy {
           this.oxygenArray.push(q.oxygen);
         });
       this.oxygen = this.oxygenArray[this.oxygenArray.length - 1];
+      if(this.oxygen > 69 && this.oxygen < 121 ){
+        document.getElementById("oxygenIcon").setAttribute("class","oxygenIcon-good");
+        document.getElementById("oxygen-value").setAttribute("class","oxygen-value-good");
+      }
     });
   }
 
@@ -291,6 +311,12 @@ export class DashboardComponent implements OnInit , OnDestroy {
           this.patientStatusArray.push(z.patientStatus);
         });
         this.patientStatus = this.patientStatusArray[this.patientStatusArray.length - 1];
+        if(this.patientStatus === 'Normal'){
+          document.getElementById("patientStatus").setAttribute("class","normal-good");
+          //document.getElementById("patientLocation").setAttribute("class","normal-good");
+          //document.getElementById("bedNumber").setAttribute("class","normal-good");
+          document.getElementById("patientIcon").setAttribute("class","patientIcon-good")
+        }
     });
   }
 
