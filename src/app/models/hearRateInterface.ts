@@ -6,4 +6,10 @@ export interface hearRateValues{
     Hora: string;
 }
 
+export interface heartRateSimulated{
+    id: number;
+    heartRate: number;
+    Fecha: string;
+    Hora: string;
+}
 

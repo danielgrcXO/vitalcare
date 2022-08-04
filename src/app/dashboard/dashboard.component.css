@@ -451,7 +451,7 @@ th{
 
 .patientMenu{
     margin-right: 1220px;
-    margin-top: -410px;
+    margin-top: -380px;
     margin-left: 5px;
 }
 
@@ -517,6 +517,8 @@ th{
 
 .patient1{
     color: #7a7a7aa8;
+    list-style: none;
+    margin-left: -38px;
 }
 
 .patient2{

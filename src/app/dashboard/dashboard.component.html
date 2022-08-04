@@ -67,14 +67,18 @@
 <div class="reports">
     <p class="medicalReports">{{ reportTitle }}</p>
     <p class="medicalReportDescription">{{ reportDescription }}</p>
-    <button type="button" class="buttonPdf" (click)="printPdf()"><fa-icon class="pdfIcon" [icon]="pdfIcon"></fa-icon>{{buttonTitlePdf}} </button>
+    <button type="button" class="buttonPdf" id="pdfButton"><fa-icon class="pdfIcon" [icon]="pdfIcon"></fa-icon>{{buttonTitlePdf}} </button>
     <button type="button" class="buttonExcel" (click)="printExcel()"><fa-icon class="excelIcon" [icon]="excelIcon"></fa-icon> {{buttonTitleExcel}}</button>
 </div>
 
 <!--Div de los pacientes en menu principal-->
 <div class="patientMenu">
     <p class="titlePatientStatus">{{patientStatusMenu}}</p>
-    <p class="patient1"><fa-icon class="patientIcon" [icon]="patientIcon" id="patientIcon"></fa-icon>{{patientName}}</p>
+    <ol id="patients">
+      <li class="patient1" *ngFor="let patient of patientNameArray" (click)="loadPatient(patient)"><fa-icon class="patientIcon" [icon]="patientIcon" id="patientIcon"></fa-icon>{{patient}}</li>
+    </ol>
+  <!---->
+  <!--  <p class="patient1"><fa-icon class="patientIcon" [icon]="patientIcon" id="patientIcon"></fa-icon>{{patientName}}</p> -->
   <!--  <p class="patient2"><fa-icon class="patientIcon2" [icon]="patientIcon"></fa-icon>Ivan Villanueva Sanchez</p>  -->
   <!--  <p class="patient3"><fa-icon class="patientIcon3" [icon]="patientIcon"></fa-icon>Claudia Angulo Garcia</p>    -->
   <!--  <p class="patient4"><fa-icon class="patientIcon4" [icon]="patientIcon"></fa-icon>Marina Guarneros Sanchez</p> -->
@@ -168,4 +172,89 @@
       </form>
 </div>
 
-
+<!--Div con la estructura del pdf y excel PACIENTE SIMULADO-->
+<div class="pdfStructure">
+  <form id="pdfFormatSimulated">
+      <div>
+      <div id="medicalInfo">
+        <p class="company"> {{company}}</p>
+        <p class="generic">Patient: {{patientName}} </p>
+        <p class="generic">Status: {{patientStatus}}</p>
+        <!--<p class="generic-location">Location: {{'Room ' + locationValue}} </p> -->
+        <!--<p class="generic-bed">Bed Number: {{bedNumberValue}}  </p> -->
+      </div>
+        <table class="tableDate" id="tableDate">
+          <thead>
+            <tr>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let date of dateArray">
+              <td class="x"> {{date}} </td>
+            </tr>
+          </tbody>
+        </table>
+        <table id="tableMinute">
+          <thead>
+            <tr>
+              <th>Minute</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let minute of hourArray">
+              <td class="x"> {{minute}} </td>
+            </tr>
+          </tbody>
+        </table>
+        <table id="tableBloodPressure">
+          <thead>
+            <tr>
+              <th>Blood Pressure</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let blood of bloodPressureArraySimulated">
+              <td class="x"> {{blood}} </td>
+            </tr>
+          </tbody>
+        </table>
+        <table id="tableHeartRate">
+          <thead>
+            <tr>
+              <th>Heart Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let heartRate of heartRateArraySimulated">
+              <td class="x"> {{heartRate}} </td>
+            </tr>
+          </tbody>
+        </table>
+        <table id="tableTemperature">
+          <thead>
+            <tr>
+              <th>Temperature</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let temperature of temperatureArraySimulated">
+              <td class="x"> {{temperature}} </td>
+            </tr>
+          </tbody>
+        </table>
+        <table id="tableOxygen">
+          <thead>
+            <tr>
+              <th>Oxygen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let oxygen of oxygenArraySimulated">
+              <td class="x"> {{oxygen}} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
+</div>

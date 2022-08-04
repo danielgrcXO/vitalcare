@@ -12,3 +12,8 @@ export interface patientStatus{
     patientStatus: string;
 }
 
+export interface patientStatusSimulated{
+    Fecha: string;
+    Hora: string;
+    patientStatus: string;
+}

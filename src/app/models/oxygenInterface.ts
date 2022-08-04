@@ -4,3 +4,10 @@ export interface oxygenValues{
     Fecha: string;
     Hora: string;
 }
+
+export interface oxygenSimulated{
+    id: number;
+    oxygen: number;
+    Fecha: string;
+    Hora: string;
+}

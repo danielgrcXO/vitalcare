@@ -5,7 +5,13 @@ import { bloodPressureValues} from '../models/bloodPressureInterface'
 import { temperatureValues} from '../models/temperatureInterface'; 
 import { oxygenValues} from '../models/oxygenInterface'
 import {patientInformation, patientStatus} from '../models/patientInterface';
+import { bloodPressureSimulated } from '../models/bloodPressureInterface';
+import { heartRateSimulated } from '../models/hearRateInterface';
+import {temperatureSimulated } from '../models/temperatureInterface';
+import {oxygenSimulated } from '../models/oxygenInterface';
+import {patientStatusSimulated} from '../models/patientInterface';
 import { DatePipe } from '@angular/common'; 
+import { Router} from '@angular/router';
 
 //imports de librerias utilizadas
 import { BaseChartDirective } from 'ng2-charts'; 
@@ -61,7 +67,14 @@ export class DashboardComponent implements OnInit , OnDestroy {
   bloodTypeValue: string;
   patientStatusArray: string[] = [];
   patientStatus: string;
-  
+
+  //Variables Paciente Simulado.
+  bloodPressureArraySimulated: number[] = [];
+  heartRateArraySimulated: number[] = [];
+  temperatureArraySimulated: number[] = [];
+  oxygenArraySimulated: number[] = [];
+  patientStatusArraySimulated: string[] = [];
+
   //Variables para reportes
   dateArray: string[] = [];
   hourArray: string[] = [];
@@ -94,6 +107,14 @@ export class DashboardComponent implements OnInit , OnDestroy {
   patientInformationUrl: string = 'http://localhost:3050/pacient/patientInfo';
   patientStatusUrl : string = 'http://localhost:3050/pacient/patientStatus';
 
+  //endpoints simulados
+  bloodPressureUrlSimulated: string = 'http://localhost:3050/pacient/bloodPressureSimulated';
+  heartRateUrlSimulated : string = 'http://localhost:3050/pacient/heartRateSimulated';
+  temperatureUrlSimulated: string = 'http://localhost:3050/pacient/temperatureSimulated';
+  oxygenUrlSimulated: string = 'http://localhost:3050/pacient/oxygenSimulated';
+  patientStatusUrlSimulated: string = 'http://localhost:3050/pacient/patientStatusSimulated';
+
+
   //Obtener fecha actual
   today: Date = new Date();
   pipe = new DatePipe('en-US');
@@ -119,7 +140,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
   public loadData = false;
 
   public chartData: ChartDataset[] = [
-    {data: [], label: 'Heart Rate Value'}
+    {data: [], label: 'Heart Rate Value'},
   ];
   public labels: string[] = [];
 
@@ -150,7 +171,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
 
  
   //Constructor que inyecta el http para peticiones
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer) {
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer,private router: Router ) {
     //sanitizar endpoints
      this.sanitizer.bypassSecurityTrustResourceUrl(this.dashboardUrl);
      this.sanitizer.bypassSecurityTrustResourceUrl(this.bloodPressureUrl);
@@ -188,14 +209,13 @@ export class DashboardComponent implements OnInit , OnDestroy {
      this.sanitizer.bypassSecurityTrustHtml(this.bloodTypeValue);
     }
 
-
   ngOnInit(): void {
 
     //recargar datos de component dashboard
-    setInterval(() =>{
+   setInterval(() =>{
       location.reload();
     }, 10000);
-
+   
     this.getData();
     this.getDate();
     this.getBloodPressure();
@@ -204,10 +224,17 @@ export class DashboardComponent implements OnInit , OnDestroy {
     this.getOxygen();
     this.getPatientInformation();
     this.getStatus();
+    document.getElementById("pdfButton").addEventListener("click", this.printPdf);
   }
 
   //Funcion que llama a los datos heartrate a grafica
   getData(){
+    this.loadData = false;
+    this.chartData[0].data = [];
+    this.labels = [];
+    this.dateArray = [];
+    this.hourArray = [];
+
     this.sub = this.http.get<hearRateValues[]>(this.dashboardUrl)
     .subscribe((data: hearRateValues[]) => {
       data.map((x) => {
@@ -221,16 +248,15 @@ export class DashboardComponent implements OnInit , OnDestroy {
         }else{
           this.chartData[0].backgroundColor  = '#e45866';
         }
-
       })
       console.log(this.chartData);
       this.loadData = true;
-     
     });
   }
 
   //Funcion que llama  datos de bloodPressure
   getBloodPressure(){
+    this.bloodPressureArray = [];
     this.sub = this.http.get<bloodPressureValues[]>(this.bloodPressureUrl)
     .subscribe((data: bloodPressureValues[]) => {
         data.map((i) => {
@@ -245,6 +271,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
   }
 
   getHeartRate(){
+    this.heartRateArray = [];
     this.sub = this.http.get<hearRateValues[]>(this.heartRateUrl)
     .subscribe((data: hearRateValues[]) => {
         data.map((z) => {
@@ -260,6 +287,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
 
   //Funcion que llama datos de temperature
   getTemperature(){
+    this.temperatureArray = [];
     this.sub = this.http.get<temperatureValues[]>(this.temperatureUrl)
     .subscribe((data: temperatureValues[]) => {
         data.map((v) => {
@@ -275,6 +303,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
 
   //Funcion que llama datos oxygen
   getOxygen(){
+    this.oxygenArray = [];
     this.sub = this.http.get<oxygenValues[]>(this.oxygenUrl)
     .subscribe((data: oxygenValues[]) => {
         data.map((q) => {
@@ -372,6 +401,166 @@ export class DashboardComponent implements OnInit , OnDestroy {
 
     XLSX.writeFile(book, this.name);
   }
+
+  /*==============Funciones para paciente simulado=============*/
+  /*===========================================================*/
+
+
+  getBloodPressureSimulated(){
+    this.bloodPressureArraySimulated = [];
+    this.sub = this.http.get<bloodPressureSimulated[]>(this.bloodPressureUrlSimulated)
+    .subscribe((data: bloodPressureSimulated[]) => {
+        data.map((i) => {
+          this.bloodPressureArraySimulated.push(i.bloodPressure);
+        });
+      this.bloodPressure = this.bloodPressureArraySimulated[this.bloodPressureArraySimulated.length - 1];
+      if(this.bloodPressure > 109 && this.bloodPressure < 116){
+        document.getElementById("bloodPressure-value").setAttribute("class","bloodPressure-value-good");
+        document.getElementById("bloodPressureIcon").setAttribute("class","bloodPressureIcon-good");
+      }
+    });
+  }
+
+  getHeartRateSimulated(){
+    this.heartRateArraySimulated = [];
+    this.sub = this.http.get<heartRateSimulated[]>(this.heartRateUrlSimulated)
+    .subscribe((data: heartRateSimulated[]) => {
+        data.map((z) => {
+          this.heartRateArraySimulated.push(z.heartRate);
+        });
+      this.heartRate = this.heartRateArraySimulated[this.heartRateArraySimulated.length - 1];
+      if(this.heartRate > 59 && this.heartRate < 151){
+        document.getElementById("heartPulseIcon").setAttribute("class","heartPulseIcon-good");
+        document.getElementById("heartRate-value").setAttribute("class","heartRate-value-good");
+      }
+    });
+  }
+
+  getTemperatureSimulated(){
+    this.temperatureArraySimulated  = [];
+    this.sub = this.http.get<temperatureSimulated[]>(this.temperatureUrlSimulated)
+    .subscribe((data: temperatureSimulated[]) => {
+        data.map((v) => {
+          this.temperatureArraySimulated.push(v.temperature);
+        });
+      this.temperature = this.temperatureArraySimulated[this.temperatureArraySimulated.length - 1];
+      if(this.temperature > 95 && this.temperature < 100){
+        document.getElementById("temperatureIcon").setAttribute("class","temperatureIcon-good");
+        document.getElementById("temperature-value").setAttribute("class","temperature-value-good");
+      }
+    });
+  }
+
+  getOxygenSimulated(){
+    this.oxygenArraySimulated = [];
+    this.sub = this.http.get<oxygenSimulated[]>(this.oxygenUrlSimulated)
+    .subscribe((data: oxygenSimulated[]) => {
+        data.map((q) => {
+          this.oxygenArraySimulated.push(q.oxygen);
+        });
+      this.oxygen = this.oxygenArraySimulated[this.oxygenArraySimulated.length - 1];
+      if(this.oxygen > 69 && this.oxygen < 121 ){
+        document.getElementById("oxygenIcon").setAttribute("class","oxygenIcon-good");
+        document.getElementById("oxygen-value").setAttribute("class","oxygen-value-good");
+      }
+    });
+  }
+
+  getDataSimulated(){
+    this.loadData = false;
+    this.chartData[0].data = [];
+    this.labels = [];
+    this.dateArray = [];
+    this.hourArray = [];
+
+    this.sub = this.http.get<heartRateSimulated[]>(this.heartRateUrlSimulated)
+    .subscribe((data: heartRateSimulated[]) => {
+      data.map((x) => {
+        this.chartData[0].data.push(x.heartRate);
+        this.labels.push(x.Hora);
+        this.dateArray.push(x.Fecha);
+        this.hourArray.push(x.Hora);
+
+        if(x.heartRate > 59 && x.heartRate < 151) {
+          this.chartData[0].backgroundColor  = 'rgb(45, 189, 53)';
+        }else{
+          this.chartData[0].backgroundColor  = '#e45866';
+        }
+
+      })
+      console.log(this.chartData);
+      this.loadData = true;
+     
+    });
+  }
+
+  getPatientStatusSimulated(){
+    this.sub = this.http.get<patientStatusSimulated[]>(this.patientStatusUrlSimulated)
+    .subscribe((data: patientStatusSimulated[]) => {
+        data.map((z) => {
+          this.patientStatusArraySimulated.push(z.patientStatus);
+        });
+        this.patientStatus = this.patientStatusArraySimulated[this.patientStatusArraySimulated.length - 1];
+        if(this.patientStatus === 'Normal'){
+          document.getElementById("patientStatus").setAttribute("class","normal-good");
+          //document.getElementById("patientLocation").setAttribute("class","normal-good");
+          //document.getElementById("bedNumber").setAttribute("class","normal-good");
+          document.getElementById("patientIcon").setAttribute("class","patientIcon-good")
+        }
+    });
+  }
+
+  printPdfSimulated(){
+    const unit = "pt";
+    const size = "A4"; // Use A1, A2, A3 or A4
+    const orientation = "landscape"; // portrait or landscape
+    const doc = new jsPDF(orientation, unit, size);
+    doc.setFontSize(4);
+    doc.html(document.getElementById('pdfFormatSimulated'),{
+        callback: function (doc) {
+          doc.save('Historial Medico Oscar Garcia Carranza');
+        }
+    });
+  }
+
+  //Funcion para cargar dash x user
+  loadPatient(patient){
+     if(patient == "Karely Hernandez Gonzales"){
+        this.patientName = this.patientNameArray[0];
+        this.locationValue = this.locationArray[0];
+        this.bedNumberValue = this.bedNumberArray[0];
+        this.bloodTypeValue = this.bloodTypeArray[0];
+
+        this.getBloodPressure();
+        this.getHeartRate();
+        this.getTemperature();
+        this.getOxygen();
+        this.getData();
+        this.getStatus();
+
+        document.getElementById("pdfButton").removeEventListener("click",this.printPdfSimulated);
+        document.getElementById("pdfButton").addEventListener("click", this.printPdf);
+     }
+     else
+        if(patient == "Oscar Garcia Carranza"){
+          this.patientName = this.patientNameArray[1];
+          this.locationValue = this.locationArray[1];
+          this.bedNumberValue = this.bedNumberArray[1];
+          this.bloodTypeValue = this.bloodTypeArray[1];
+
+          this.getBloodPressureSimulated();
+          this.getHeartRateSimulated();
+          this.getTemperatureSimulated();
+          this.getOxygenSimulated();
+          this.getDataSimulated();
+          this.getPatientStatusSimulated();
+
+          document.getElementById("pdfButton").removeEventListener("click",this.printPdf);
+          document.getElementById("pdfButton").addEventListener("click", this.printPdfSimulated);
+     }
+   }
+
+ 
 
   //Cancela observacion
   ngOnDestroy(){
