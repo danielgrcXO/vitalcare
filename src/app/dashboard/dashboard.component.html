@@ -68,7 +68,7 @@
     <p class="medicalReports">{{ reportTitle }}</p>
     <p class="medicalReportDescription">{{ reportDescription }}</p>
     <button type="button" class="buttonPdf" id="pdfButton"><fa-icon class="pdfIcon" [icon]="pdfIcon"></fa-icon>{{buttonTitlePdf}} </button>
-    <button type="button" class="buttonExcel" (click)="printExcel()"><fa-icon class="excelIcon" [icon]="excelIcon"></fa-icon> {{buttonTitleExcel}}</button>
+    <button type="button" class="buttonExcel" id="excelButton" ><fa-icon class="excelIcon" [icon]="excelIcon"></fa-icon> {{buttonTitleExcel}}</button>
 </div>
 
 <!--Div de los pacientes en menu principal-->
@@ -77,11 +77,6 @@
     <ol id="patients">
       <li class="patient1" *ngFor="let patient of patientNameArray" (click)="loadPatient(patient)"><fa-icon class="patientIcon" [icon]="patientIcon" id="patientIcon"></fa-icon>{{patient}}</li>
     </ol>
-  <!---->
-  <!--  <p class="patient1"><fa-icon class="patientIcon" [icon]="patientIcon" id="patientIcon"></fa-icon>{{patientName}}</p> -->
-  <!--  <p class="patient2"><fa-icon class="patientIcon2" [icon]="patientIcon"></fa-icon>Ivan Villanueva Sanchez</p>  -->
-  <!--  <p class="patient3"><fa-icon class="patientIcon3" [icon]="patientIcon"></fa-icon>Claudia Angulo Garcia</p>    -->
-  <!--  <p class="patient4"><fa-icon class="patientIcon4" [icon]="patientIcon"></fa-icon>Marina Guarneros Sanchez</p> -->
 </div>
 
 
@@ -183,7 +178,7 @@
         <!--<p class="generic-location">Location: {{'Room ' + locationValue}} </p> -->
         <!--<p class="generic-bed">Bed Number: {{bedNumberValue}}  </p> -->
       </div>
-        <table class="tableDate" id="tableDate">
+        <table class="tableDate" id="tableDateSimulated">
           <thead>
             <tr>
               <th>Date</th>
@@ -195,7 +190,7 @@
             </tr>
           </tbody>
         </table>
-        <table id="tableMinute">
+        <table id="tableMinuteSimulated">
           <thead>
             <tr>
               <th>Minute</th>
@@ -207,7 +202,7 @@
             </tr>
           </tbody>
         </table>
-        <table id="tableBloodPressure">
+        <table id="tableBloodPressureSimulated">
           <thead>
             <tr>
               <th>Blood Pressure</th>
@@ -219,7 +214,7 @@
             </tr>
           </tbody>
         </table>
-        <table id="tableHeartRate">
+        <table id="tableHeartRateSimulated">
           <thead>
             <tr>
               <th>Heart Rate</th>
@@ -231,7 +226,7 @@
             </tr>
           </tbody>
         </table>
-        <table id="tableTemperature">
+        <table id="tableTemperatureSimulated">
           <thead>
             <tr>
               <th>Temperature</th>
@@ -243,7 +238,7 @@
             </tr>
           </tbody>
         </table>
-        <table id="tableOxygen">
+        <table id="tableOxygenSimulated">
           <thead>
             <tr>
               <th>Oxygen</th>

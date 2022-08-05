@@ -211,7 +211,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
 
   ngOnInit(): void {
 
-    //recargar datos de component dashboard
+   //recargar datos de component dashboard
    setInterval(() =>{
       location.reload();
     }, 10000);
@@ -225,6 +225,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
     this.getPatientInformation();
     this.getStatus();
     document.getElementById("pdfButton").addEventListener("click", this.printPdf);
+    document.getElementById("excelButton").addEventListener("click", this.printExcel);
   }
 
   //Funcion que llama a los datos heartrate a grafica
@@ -369,7 +370,6 @@ export class DashboardComponent implements OnInit , OnDestroy {
   }
 
   //Funcion para imprimir excel
-  name = 'MedicalReport-Karely-Hernandez-Gonzales.xlsx';
   printExcel(): void {
     let element = document.getElementById('tableDate');
     const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
@@ -399,7 +399,39 @@ export class DashboardComponent implements OnInit , OnDestroy {
     XLSX.utils.book_append_sheet(book, worksheet6, 'Oxygen' );
 
 
-    XLSX.writeFile(book, this.name);
+    XLSX.writeFile(book, 'MedicalReport-Karely-Hernandez-Gonzales.xlsx');
+  }
+
+  printExcelSimulated(): void {
+    let element = document.getElementById('tableDateSimulated');
+    const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+    let element2 = document.getElementById('tableMinuteSimulated');
+    const worksheet2: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element2);
+    let element3 = document.getElementById('tableBloodPressureSimulated');
+    const worksheet3: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element3);
+    let element4 = document.getElementById('tableHeartRateSimulated');
+    const worksheet4: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element4);
+    let element5 = document.getElementById('tableTemperatureSimulated');
+    const worksheet5: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element5);
+    let element6 = document.getElementById('tableOxygenSimulated');
+    const worksheet6: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element6);
+    
+    const book: XLSX.WorkBook = XLSX.utils.book_new();
+    const book2: XLSX.WorkBook = XLSX.utils.book_new();
+    const book3: XLSX.WorkBook = XLSX.utils.book_new();
+    const book4: XLSX.WorkBook = XLSX.utils.book_new();
+    const book5: XLSX.WorkBook = XLSX.utils.book_new();
+    const book6: XLSX.WorkBook = XLSX.utils.book_new();
+
+    XLSX.utils.book_append_sheet(book, worksheet, 'Date');
+    XLSX.utils.book_append_sheet(book, worksheet2, 'Minute' );
+    XLSX.utils.book_append_sheet(book, worksheet3, 'Blood Pressure');
+    XLSX.utils.book_append_sheet(book, worksheet4, 'Heart Rate');
+    XLSX.utils.book_append_sheet(book, worksheet5, 'Temperature');
+    XLSX.utils.book_append_sheet(book, worksheet6, 'Oxygen' );
+
+
+    XLSX.writeFile(book, 'MedicalReport-Oscar-Garcia-Carranza.xlsx');
   }
 
   /*==============Funciones para paciente simulado=============*/
@@ -540,6 +572,9 @@ export class DashboardComponent implements OnInit , OnDestroy {
 
         document.getElementById("pdfButton").removeEventListener("click",this.printPdfSimulated);
         document.getElementById("pdfButton").addEventListener("click", this.printPdf);
+
+        document.getElementById("excelButton").removeEventListener("click",this.printExcelSimulated);
+        document.getElementById("excelButton").addEventListener("click", this.printExcel);
      }
      else
         if(patient == "Oscar Garcia Carranza"){
@@ -557,10 +592,11 @@ export class DashboardComponent implements OnInit , OnDestroy {
 
           document.getElementById("pdfButton").removeEventListener("click",this.printPdf);
           document.getElementById("pdfButton").addEventListener("click", this.printPdfSimulated);
+
+          document.getElementById("excelButton").removeEventListener("click",this.printExcel);
+          document.getElementById("excelButton").addEventListener("click",this.printExcelSimulated);
      }
    }
-
- 
 
   //Cancela observacion
   ngOnDestroy(){
