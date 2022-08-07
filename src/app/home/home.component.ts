@@ -27,8 +27,8 @@ export class HomeComponent implements OnInit {
 
   
   constructor(private sanitizer: DomSanitizer) { 
-    console.log(this.sanitizer.bypassSecurityTrustHtml(this.mainTitle));
-    console.log(this.sanitizer.bypassSecurityTrustHtml(this.mainDescription));
+    this.sanitizer.bypassSecurityTrustHtml(this.mainTitle);
+    this.sanitizer.bypassSecurityTrustHtml(this.mainDescription);
   }
 
   ngOnInit(): void {

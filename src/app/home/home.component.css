@@ -25,3 +25,29 @@
 fa-icon{
   color: #585CE4;
 }
+
+/*==============MEDIDA PARA TABLET================*/
+/*================================================*/
+@media screen and (max-width: 1440px){
+  .image{
+    margin-left: 346px;
+    margin-top: -953px;
+    height:60em; background-size:cover; width:auto;
+  }
+
+  .mainTitle{
+    margin-top: -835px;
+    font-size: 60px;
+  }
+
+  fa-icon{
+    font-size: 70px;
+  }
+
+  .mainDescription{
+    width: 44%;
+    text-align: justify;
+    font-size: 21px;
+  }
+
+}

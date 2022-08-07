@@ -180,6 +180,12 @@ export class DashboardComponent implements OnInit , OnDestroy {
      this.sanitizer.bypassSecurityTrustResourceUrl(this.oxygenUrl);
      this.sanitizer.bypassSecurityTrustResourceUrl(this.patientInformationUrl);
      this.sanitizer.bypassSecurityTrustResourceUrl(this.patientStatusUrl);
+     this.sanitizer.bypassSecurityTrustResourceUrl(this.bloodPressureUrlSimulated);
+     this.sanitizer.bypassSecurityTrustResourceUrl(this.heartRateUrlSimulated);
+     this.sanitizer.bypassSecurityTrustResourceUrl(this.temperatureUrlSimulated);
+     this.sanitizer.bypassSecurityTrustResourceUrl(this.oxygenUrlSimulated);
+     this.sanitizer.bypassSecurityTrustResourceUrl(this.patientStatusUrlSimulated);
+
 
      //Sanitizar variables que se colocan en html
      this.sanitizer.bypassSecurityTrustHtml(this.headerTitle);
@@ -282,6 +288,9 @@ export class DashboardComponent implements OnInit , OnDestroy {
       if(this.heartRate > 59 && this.heartRate < 151){
         document.getElementById("heartPulseIcon").setAttribute("class","heartPulseIcon-good");
         document.getElementById("heartRate-value").setAttribute("class","heartRate-value-good");
+      }else{
+        document.getElementById("heartPulseIcon").setAttribute("class","heartPulseIcon")
+        document.getElementById("heartRate-value").setAttribute("class","heartRate-value");
       }
     });
   }
@@ -314,6 +323,9 @@ export class DashboardComponent implements OnInit , OnDestroy {
       if(this.oxygen > 69 && this.oxygen < 121 ){
         document.getElementById("oxygenIcon").setAttribute("class","oxygenIcon-good");
         document.getElementById("oxygen-value").setAttribute("class","oxygen-value-good");
+      }else{
+        document.getElementById("oxygenIcon").setAttribute("class","oxygenIcon");
+        document.getElementById("oxygen-value").setAttribute("class","oxygen-value");
       }
     });
   }
@@ -341,11 +353,13 @@ export class DashboardComponent implements OnInit , OnDestroy {
           this.patientStatusArray.push(z.patientStatus);
         });
         this.patientStatus = this.patientStatusArray[this.patientStatusArray.length - 1];
+        
         if(this.patientStatus === 'Normal'){
           document.getElementById("patientStatus").setAttribute("class","normal-good");
-          //document.getElementById("patientLocation").setAttribute("class","normal-good");
-          //document.getElementById("bedNumber").setAttribute("class","normal-good");
-          document.getElementById("patientIcon").setAttribute("class","patientIcon-good")
+          //document.getElementById("patientIcon").setAttribute("class","patientIcon-good");
+        }else{
+          document.getElementById("patientStatus").setAttribute("class","Normal");
+          //document.getElementById("patientIcon").setAttribute("class","patientIcon");
         }
     });
   }
@@ -371,28 +385,21 @@ export class DashboardComponent implements OnInit , OnDestroy {
 
   //Funcion para imprimir excel
   printExcel(): void {
-    let element = document.getElementById('tableDate');
-    const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
-    let element2 = document.getElementById('tableMinute');
-    const worksheet2: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element2);
+    let element = document.getElementById('pdfFormat');
+    const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element, {origin: "A1"});
     let element3 = document.getElementById('tableBloodPressure');
-    const worksheet3: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element3);
+    const worksheet3: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element3, {origin: "A1"});
     let element4 = document.getElementById('tableHeartRate');
-    const worksheet4: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element4);
+    const worksheet4: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element4, {origin: "A1"});
     let element5 = document.getElementById('tableTemperature');
-    const worksheet5: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element5);
+    const worksheet5: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element5, {origin: "A1"});
     let element6 = document.getElementById('tableOxygen');
-    const worksheet6: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element6);
+    const worksheet6: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element6, {origin: "A1"});
     
     const book: XLSX.WorkBook = XLSX.utils.book_new();
-    const book2: XLSX.WorkBook = XLSX.utils.book_new();
-    const book3: XLSX.WorkBook = XLSX.utils.book_new();
-    const book4: XLSX.WorkBook = XLSX.utils.book_new();
-    const book5: XLSX.WorkBook = XLSX.utils.book_new();
-    const book6: XLSX.WorkBook = XLSX.utils.book_new();
+  
 
-    XLSX.utils.book_append_sheet(book, worksheet, 'Date');
-    XLSX.utils.book_append_sheet(book, worksheet2, 'Minute' );
+    XLSX.utils.book_append_sheet(book, worksheet, 'All data');
     XLSX.utils.book_append_sheet(book, worksheet3, 'Blood Pressure');
     XLSX.utils.book_append_sheet(book, worksheet4, 'Heart Rate');
     XLSX.utils.book_append_sheet(book, worksheet5, 'Temperature');
@@ -403,28 +410,21 @@ export class DashboardComponent implements OnInit , OnDestroy {
   }
 
   printExcelSimulated(): void {
-    let element = document.getElementById('tableDateSimulated');
-    const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
-    let element2 = document.getElementById('tableMinuteSimulated');
-    const worksheet2: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element2);
+    let element = document.getElementById('pdfFormatSimulated');
+    const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element,{origin: "A1"} );
     let element3 = document.getElementById('tableBloodPressureSimulated');
-    const worksheet3: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element3);
+    const worksheet3: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element3,{origin: "A1"});
     let element4 = document.getElementById('tableHeartRateSimulated');
-    const worksheet4: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element4);
+    const worksheet4: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element4,{origin: "A1"});
     let element5 = document.getElementById('tableTemperatureSimulated');
-    const worksheet5: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element5);
+    const worksheet5: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element5,{origin: "A1"});
     let element6 = document.getElementById('tableOxygenSimulated');
-    const worksheet6: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element6);
+    const worksheet6: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element6,{origin: "A1"});
     
     const book: XLSX.WorkBook = XLSX.utils.book_new();
-    const book2: XLSX.WorkBook = XLSX.utils.book_new();
-    const book3: XLSX.WorkBook = XLSX.utils.book_new();
-    const book4: XLSX.WorkBook = XLSX.utils.book_new();
-    const book5: XLSX.WorkBook = XLSX.utils.book_new();
-    const book6: XLSX.WorkBook = XLSX.utils.book_new();
+   
 
-    XLSX.utils.book_append_sheet(book, worksheet, 'Date');
-    XLSX.utils.book_append_sheet(book, worksheet2, 'Minute' );
+    XLSX.utils.book_append_sheet(book, worksheet, 'All Data');
     XLSX.utils.book_append_sheet(book, worksheet3, 'Blood Pressure');
     XLSX.utils.book_append_sheet(book, worksheet4, 'Heart Rate');
     XLSX.utils.book_append_sheet(book, worksheet5, 'Temperature');
@@ -535,9 +535,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
         this.patientStatus = this.patientStatusArraySimulated[this.patientStatusArraySimulated.length - 1];
         if(this.patientStatus === 'Normal'){
           document.getElementById("patientStatus").setAttribute("class","normal-good");
-          //document.getElementById("patientLocation").setAttribute("class","normal-good");
-          //document.getElementById("bedNumber").setAttribute("class","normal-good");
-          document.getElementById("patientIcon").setAttribute("class","patientIcon-good")
+          //document.getElementById("patientIcon").setAttribute("class","patientIcon-good")
         }
     });
   }
