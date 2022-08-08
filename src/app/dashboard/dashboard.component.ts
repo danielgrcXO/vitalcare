@@ -464,6 +464,9 @@ export class DashboardComponent implements OnInit , OnDestroy {
       if(this.heartRate > 59 && this.heartRate < 151){
         document.getElementById("heartPulseIcon").setAttribute("class","heartPulseIcon-good");
         document.getElementById("heartRate-value").setAttribute("class","heartRate-value-good");
+      }else{
+        document.getElementById("heartPulseIcon").setAttribute("class","heartPulseIcon");
+        document.getElementById("heartRate-value").setAttribute("class","heartRate-value");
       }
     });
   }
@@ -494,6 +497,9 @@ export class DashboardComponent implements OnInit , OnDestroy {
       if(this.oxygen > 69 && this.oxygen < 121 ){
         document.getElementById("oxygenIcon").setAttribute("class","oxygenIcon-good");
         document.getElementById("oxygen-value").setAttribute("class","oxygen-value-good");
+      }else{
+        document.getElementById("oxygenIcon").setAttribute("class","oxygenIcon");
+        document.getElementById("oxygen-value").setAttribute("class","oxygen-value");
       }
     });
   }
@@ -536,6 +542,8 @@ export class DashboardComponent implements OnInit , OnDestroy {
         if(this.patientStatus === 'Normal'){
           document.getElementById("patientStatus").setAttribute("class","normal-good");
           //document.getElementById("patientIcon").setAttribute("class","patientIcon-good")
+        }else{
+          document.getElementById("patientStatus").setAttribute("class","Normal");
         }
     });
   }
