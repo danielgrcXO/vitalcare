@@ -17,3 +17,13 @@ export interface patientStatusSimulated{
     Hora: string;
     patientStatus: string;
 }
+
+export interface newPatient{
+    id: number;
+    name: string;
+    age: number;
+    bloodType: string;
+    weight: number;
+    idMeds: number;
+    idRoom: number;
+}

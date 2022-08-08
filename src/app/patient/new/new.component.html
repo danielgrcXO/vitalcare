@@ -1,65 +1,57 @@
 <div class="container" id="general-container">
-    <div class="w-100 inline-block padding-tb-10" id="card-title">
-        <h3 class="float-left">New Patient</h3>
-    </div>
-    <div class="w-100 h-550 bg-white" id="form-card">
-        <div class="row">
-            <div class="col-md">
-                <label id="lblFirstName" for="inFirstName"><fa-icon [icon]="UserIcon" ></fa-icon> First name:</label><br>
-                <input id="inFirstName" type="text">
-            </div>
-            <div class="col-md">
-                <label id="lblLastName" for="inLastName"><fa-icon [icon]="UserIcon" ></fa-icon> Last name:</label><br>
-                <input id="inLastName" type="text">
-            </div>
+    <form #usersForm="ngForm" (ngSubmit)="savePatient(usersForm.value)">
+        <div class="w-100 inline-block padding-tb-10" id="card-title">
+            <h3 class="float-left">New Patient</h3>
+        </div>
+        <div class="w-100 h-550 bg-white" id="form-card">
+            <div class="row">
+                <div class="col-md">
+                    <label id="lblFirstName" for="inFirstName"><fa-icon [icon]="UserIcon" ></fa-icon> First name:</label><br>
+                    <input id="inFirstName" [(ngModel)]="name" type="text" name="name">
+                </div>
+                <div class="col-md">
+                    <label id="lblLastName" for="inLastName"><fa-icon [icon]="UserIcon" ></fa-icon> Last name:</label><br>
+                    <input id="inLastName" [(ngModel)]="LastName" type="text" name="LastName">
+                </div>
 
-        </div>
-        <div class="row">
-            <div class="col-md">
-                <label id="lblBirthday" for="inBirthday"><fa-icon [icon]="Birthday" ></fa-icon> Birthday:</label><br>
-                <input id="inBirthday" type="date">
             </div>
-            <div class="col-md">
-                <label id="lblPlaceOfBirth" for="inPlaceOfBirth"><fa-icon [icon]="Location" ></fa-icon> Place of birth:</label><br>
-                <input id="inPlaceOfBirth" type="text">
+            <div class="row">
+                <div class="col-md">
+                    <label id="lblAge" for="inAge"><fa-icon [icon]="Birthday" ></fa-icon> Age:</label><br>
+                    <input id="inAge" [(ngModel)]="age" type="number" name="age">
+                </div>
+                <div class="col-md">
+                    <label id="lbBloodType" for="inBloodType"><fa-icon [icon]="Location" ></fa-icon> Blood Type:</label><br>
+                    <input id="inBloodType" [(ngModel)]="bloodType" type="text" name="bloodType">
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md">
-                <label id="lblEmail" for="inEmail"><fa-icon [icon]="Email" ></fa-icon> Email:</label><br>
-                <input id="inEmail" type="email">
+            <div class="row">
+                <div class="col-md">
+                    <label id="lblHeight" for="inHeight">Height:</label><br>
+                    <input id="inHeight" [(ngModel)]="height" type="number" name="height" placeholder="Unit in cm">
+                </div>
+                <div class="col-md">
+                    <label id="lblWeight" for="inWeight">Weight:</label><br>
+                    <input id="inWeight" [(ngModel)]="weight" type="number" name="weight" placeholder="Unit in kilograms">
+                </div>
             </div>
-            <div class="col-md">
-                <label id="lblPhone" for="inPhone"><fa-icon [icon]="Phone" ></fa-icon> Phone:</label><br>
-                <input id="inPhone" type="tel">
+            <div class="row">
+                <div class="col-md">
+                    <label id="lblReason" for="inReason">Reason of visit:</label><br>
+                    <input id="inReason" [(ngModel)]="Reason" name="Reason"  type="text">
+                </div>
+                <div class="col-md">
+                    <label id="lblDoctor" for="selDoctor">Assign Doctor:</label><br>
+                    <select id="selDoctor">
+                        <option id="optDoctor" disabled selected>Select a doctor</option>
+                        <option id="optDoctor">Juan Rodrigo Mercado Slivkoff</option>
+                        <option id="optDoctor">Luis Angel Caldera Romero</option>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md">
-                <label id="lblHeight" for="inHeight">Height:</label><br>
-                <input id="inHeight" type="number" placeholder="Unit in cm">
-            </div>
-            <div class="col-md">
-                <label id="lblWeight" for="inWeight">Weight:</label><br>
-                <input id="inWeight" type="number" placeholder="Unit in kilograms">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md">
-                <label id="lblReason" for="inReason">Reason of visit:</label><br>
-                <input id="inReason" type="text">
-            </div>
-            <div class="col-md">
-                <label id="lblDoctor" for="selDoctor">Assign Doctor:</label><br>
-                <select id="selDoctor">
-                    <option id="optDoctor" disabled selected>Select a doctor</option>
-                    <option id="optDoctor">Juan Rodrigo Mercado Slivkoff</option>
-                    <option id="optDoctor">Luis Angel Caldera Romero</option>
-                </select>
+            <div class="row-final">
+                    <button class="button-8" id="btnSubmit" type="submit" value="Submit">Register</button>
             </div>
         </div>
-        <div class="row-final">
-                <button class="button-8" id="btnSubmit" type="button" (click)="register()">Register</button>
-        </div>
-    </div>
+    </form>
 </div>

@@ -1,9 +1,32 @@
 <div class="container" id="general-container">
-    <div class="w-100 inline-block padding-tb-10" id="card-title">
-        <h3 class="float-left">Patients</h3>
-        <button class="button-8 float-right" type="button" (click)="open()">Agregar paciente</button>
-    </div>
-    <div class="w-100 bg-white" id="img-card">
-        <img class="w-100" src="./assets/images/plan1.png" alt="floor-plan">
-    </div>
+    <span *ngFor="let item of patientNameArray">
+        <div class="w-100 inline-block padding-tb-10" id="card-title">
+            <h3 class="float-left">Patients</h3>
+            <button class="button-8 float-right" type="button" (click)="open()">Agregar paciente</button>
+        </div>
+        <div class="w-100 bg-white" id="img-card">
+            <img class="w-100" src="./assets/images/plan1.png" alt="floor-plan">
+        </div>
+        <div id="user1" class="absolute h-50px">
+            <div class="float-left bg-red h-inherit radius-l-15 color-red padding-10">C</div>
+            <div class="float-right h-inherit bg-white radius-r-15 padding-10">
+                <div id="userName">{{patientNameArray[0]}}</div>
+                <div id="userLocation">Camilla {{bedNumberArray[0]}}</div>
+            </div>
+        </div>
+        <div id="user2" class="absolute h-50px">
+            <div class="float-left bg-green h-inherit radius-l-15 color-green padding-10">C</div>
+            <div class="float-right h-inherit bg-white radius-r-15 padding-10">
+                <div id="userName">{{patientNameArray[1]}}</div>
+                <div id="userLocation">Camilla {{bedNumberArray[1]}}</div>
+            </div>
+        </div>
+        <div id="user3" class="absolute h-50px">
+            <div class="float-left bg-yellow h-inherit radius-l-15 color-yellow padding-10">C</div>
+            <div class="float-right h-inherit bg-white radius-r-15 padding-10">
+                <div id="userName">{{patientNameArray[2]}}</div>
+                <div id="userLocation">Camilla {{bedNumberArray[2]}}</div>
+            </div>
+        </div>
+    </span>
 </div>

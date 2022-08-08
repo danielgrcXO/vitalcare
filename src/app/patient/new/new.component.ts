@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
+import { Subscription } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faBuilding } from '@fortawesome/free-regular-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
@@ -13,16 +15,29 @@ import { faCake } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./new.component.css']
 })
 export class NewComponent implements OnInit {
+  private sub: Subscription;
+  name: string  = '';
+  LastName: string = '' ;
+  age: number  = null;
+  bloodType: string = '';
+  height: number = null;
+  weight: number = null;
+  Reason: string = '';
 
-  constructor(private router: Router) { }
+  patientInformationUrl: string = 'http://localhost:3050/patient/newPatient';
 
-  ngOnInit(): void {
-  }
+  constructor(private router: Router, private http: HttpClient) {}
 
-  public register(){
+  ngOnInit(): void {}
+
+  savePatient(data:any){
+    this.http.post(this.patientInformationUrl, data).subscribe((result)=>{
+      console.log(result);
+      console.warn(result);
+    });
     alert("Registered Successfully");
     this.router.navigateByUrl('/home');
-  }
+  };
 
   UserIcon = faUser;
   Place = faBuilding;
