@@ -3,7 +3,8 @@ import { Router} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer} from '@angular/platform-browser';
-import {patientInformation} from '../models/patientInterface';
+import { patientInformation, patientStatus, patientStatusSimulated } from '../models/patientInterface';
+import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 /*===================================================================*/
 /*===================================================================*/
@@ -35,8 +36,11 @@ export class PatientComponent implements OnInit {
   bloodTypeValue: string;
   patientStatusArray: string[] = [];
   patientStatus: string;
+  patientStatusArraySimulated: string[] = [];
 
   patientInformationUrl: string = 'http://localhost:3050/pacient/patientInfo';
+  patientStatusUrl : string = 'http://localhost:3050/pacient/patientStatus';
+  patientStatusUrlSimulated: string = 'http://localhost:3050/pacient/patientStatusSimulated';
 
   constructor(
     private router: Router, 
@@ -60,10 +64,26 @@ export class PatientComponent implements OnInit {
         });
     });
 
+    this.sub = this.http.get<patientStatus[]>(this.patientStatusUrl)
+    .subscribe((data: patientStatus[]) => {
+        data.map((z) => {
+          this.patientStatusArray.push(z.patientStatus);
+        });
+    });
+
+    this.sub = this.http.get<patientStatusSimulated[]>(this.patientStatusUrlSimulated)
+    .subscribe((data: patientStatusSimulated[]) => {
+        data.map((z) => {
+          this.patientStatusArraySimulated.push(z.patientStatus);
+        });
+    });
+
   }
 
   public open(){
     this.router.navigateByUrl('/patientLocation/new');
   }
+
+  AddUserIcon = faUserPlus;
 
 }

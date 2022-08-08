@@ -2,12 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faBuilding } from '@fortawesome/free-regular-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faLocation } from '@fortawesome/free-solid-svg-icons';
 import { faCake } from '@fortawesome/free-solid-svg-icons';
+import { faRulerVertical } from '@fortawesome/free-solid-svg-icons';
+import { faWeightHanging } from '@fortawesome/free-solid-svg-icons';
+import { faNotesMedical } from '@fortawesome/free-solid-svg-icons';
+import { faCommentMedical } from '@fortawesome/free-solid-svg-icons';
+import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-new',
@@ -23,6 +28,7 @@ export class NewComponent implements OnInit {
   height: number = null;
   weight: number = null;
   Reason: string = '';
+  Extras: string = '';
 
   patientInformationUrl: string = 'http://localhost:3050/patient/newPatient';
 
@@ -45,4 +51,9 @@ export class NewComponent implements OnInit {
   Phone = faPhone;
   Location = faLocation;
   Birthday = faCake;
+  HeightIcon = faRulerVertical;
+  WeightIcon = faWeightHanging;
+  Visit = faNotesMedical;
+  Comment = faCommentMedical;
+  SaveIcon = faUserPlus;
 }

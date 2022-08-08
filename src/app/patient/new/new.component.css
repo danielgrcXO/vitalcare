@@ -138,3 +138,22 @@ fa-icon{
     box-shadow: none;
     color: #2c5777;
   }
+
+  #btnSubmit{
+    width: 30%;
+    height: 50px;
+    margin-left: 40px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    border: 1px solid #585CE4;
+    background:#585CE4;
+    color: white;
+    font-size: 17px;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+  }
+
+  .userIcon{
+    color: white;
+  }
