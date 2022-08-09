@@ -1,6 +1,10 @@
 #general-container {
     height: auto;
-    margin: -690px 20px 0 340px ;
+    margin-left: 450px;
+    margin-top: 70px;
+    width: 60%;
+    background-color: red;
+    border-radius: 10px;
 }
 
 h3 {
@@ -138,3 +142,40 @@ fa-icon{
     box-shadow: none;
     color: #2c5777;
   }
+
+  #btnSubmit{
+    width: 30%;
+    height: 50px;
+    margin-left: 40px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    border: 1px solid #585CE4;
+    background:#585CE4;
+    color: white;
+    font-size: 17px;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+  }
+
+  .userIcon{
+    color: white;
+  }
+
+  /*CAMBIOS QUE HICE*/
+  
+
+
+  .header{
+    background-color: rgb(254, 255, 255);
+    margin-left: 321px;
+    margin-top: -774px;
+    height: 62px;  
+}
+
+.titleHeader{
+    font-size: 20px;
+    color: #7a7a7a;
+    margin-left: 1090px;
+    padding-top: 15px;
+}
