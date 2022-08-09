@@ -37,7 +37,7 @@ export class NewComponent implements OnInit {
   headerTitle = 'VitalCare®';
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {  }
 
   savePatient(data:any){
     this.http.post(this.patientInformationUrl, data).subscribe((result)=>{

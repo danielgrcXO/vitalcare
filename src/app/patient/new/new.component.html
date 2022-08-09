@@ -10,42 +10,42 @@
             <div class="row">
                 <div class="col-md">
                     <label id="lblFirstName" for="inFirstName"><fa-icon [icon]="UserIcon" ></fa-icon> First name:</label><br>
-                    <input id="inFirstName" [(ngModel)]="name" type="text" name="name">
+                    <input id="inFirstName" [(ngModel)]="name" type="text" name="name" minlength="1" maxlength="30" required>
                 </div>
                 <div class="col-md">
                     <label id="lblLastName" for="inLastName"><fa-icon [icon]="UserIcon" ></fa-icon> Last name:</label><br>
-                    <input id="inLastName" [(ngModel)]="LastName" type="text" name="LastName">
+                    <input id="inLastName" [(ngModel)]="LastName" type="text" name="LastName" minlength="1" maxlength="30" required>
                 </div>
 
             </div>
             <div class="row">
                 <div class="col-md">
                     <label id="lblAge" for="inAge"><fa-icon [icon]="Birthday" ></fa-icon> Age:</label><br>
-                    <input id="inAge" [(ngModel)]="age" type="number" name="age">
+                    <input id="inAge" [(ngModel)]="age" type="number" name="age" minlength="1" maxlength="3" required>
                 </div>
                 <div class="col-md">
                     <label id="lbBloodType" for="inBloodType"><fa-icon [icon]="Location" ></fa-icon> Blood Type:</label><br>
-                    <input id="inBloodType" [(ngModel)]="bloodType" type="text" name="bloodType">
+                    <input id="inBloodType" [(ngModel)]="bloodType" type="text" name="bloodType" minlength="1" maxlength="3" required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md">
                     <label id="lblHeight" for="inHeight"><fa-icon [icon]="HeightIcon" ></fa-icon> Height:</label><br>
-                    <input id="inHeight" [(ngModel)]="height" type="number" name="height" placeholder="Unit in cm">
+                    <input id="inHeight" [(ngModel)]="height" type="number" name="height" minlength="1"  maxlength="5" placeholder="Unit in cm" required>
                 </div>
                 <div class="col-md">
                     <label id="lblWeight" for="inWeight"><fa-icon [icon]="WeightIcon"></fa-icon> Weight:</label><br>
-                    <input id="inWeight" [(ngModel)]="weight" type="number" name="weight" placeholder="Unit in kilograms">
+                    <input id="inWeight" [(ngModel)]="weight" type="number" name="weight" minlength="1" placeholder="Unit in kilograms" required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md">
                     <label id="lblReason" for="inReason"><fa-icon [icon]="Visit"></fa-icon> Reason of visit:</label><br>
-                    <input id="inReason" [(ngModel)]="Reason" name="Reason"  type="text">
+                    <input id="inReason" [(ngModel)]="Reason" name="Reason"  type="text" minlength="1" required>
                 </div>
                 <div class="col-md">
                     <label id="lblExtras" for="inExtras"><fa-icon [icon]="Comment"></fa-icon> Extra Information:</label><br>
-                    <input id="inExtras" [(ngModel)]="Extras" name="Extras"  type="text">
+                    <input id="inExtras" [(ngModel)]="Extras" name="Extras" type="text">
                 </div>
             </div>
             <div class="row-final">

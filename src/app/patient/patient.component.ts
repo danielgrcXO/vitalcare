@@ -44,11 +44,14 @@ export class PatientComponent implements OnInit {
   patientStatusArraySimulated: string[] = [];
   statusLayout: string;
   statusLayoutSimulated: string;
+  lastPatientStatusArray: string[] = [];
+  lastPatientStatus: string;
 
 
   patientInformationUrl: string = 'http://localhost:3050/pacient/patientInfo';
   patientStatusUrl : string = 'http://localhost:3050/pacient/patientStatus';
   patientStatusUrlSimulated: string = 'http://localhost:3050/pacient/patientStatusSimulated';
+  lastPatientStatusUrl: string = 'http://localhost:3050/patient/lastPatient';
 
   constructor(
     private router: Router, 
@@ -88,6 +91,13 @@ export class PatientComponent implements OnInit {
         this.statusLayoutSimulated = this.patientStatusArraySimulated[this.patientStatusArraySimulated.length - 1];
     });
 
+    this.sub = this.http.get<patientStatus[]>(this.lastPatientStatusUrl)
+    .subscribe((data: patientStatus[])=>{
+      data.map((z)=>{
+        this.lastPatientStatusArray.push(z.patientStatus);
+      })
+    });
+        this.lastPatientStatus = this.lastPatientStatusArray[0];
   }
 
   public open(){
