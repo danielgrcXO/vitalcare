@@ -3,8 +3,8 @@
 </div>
 
 <div class="container" id="general-container">
-    <p>Register a new patient</p>
-    <form #usersForm="ngForm" (ngSubmit)="savePatient(usersForm.value)">
+    <p class="addTitle">Register a new patient</p>
+    <form  #usersForm="ngForm" (ngSubmit)="savePatient(usersForm.value)">
        
         <div class="w-100 h-550 bg-white" id="form-card">
             <div class="row">
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="row-final">
-                    <button id="btnSubmit" type="submit" value="Submit"><fa-icon class="userIcon" [icon]="SaveIcon"></fa-icon> Register</button>
+                    <button id="btnSubmit" type="submit" value="Submit"><fa-icon class="userIcon"  [icon]="SaveIcon"></fa-icon> Register</button>
             </div>
         </div>
     </form>
