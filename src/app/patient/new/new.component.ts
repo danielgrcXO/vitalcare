@@ -13,6 +13,7 @@ import { faWeightHanging } from '@fortawesome/free-solid-svg-icons';
 import { faNotesMedical } from '@fortawesome/free-solid-svg-icons';
 import { faCommentMedical } from '@fortawesome/free-solid-svg-icons';
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-new',
@@ -29,6 +30,20 @@ export class NewComponent implements OnInit {
   weight: number = null;
   Reason: string = '';
   Extras: string = '';
+  
+
+  //Validation
+  firstNameValidation: any;
+  lastNameValidation: any;
+  ageValidation: any;
+  bloodTypeValidation: any;
+  heightValidation: any;
+  weightValidation:any;
+  reasonVisitValidation: any;
+  extraInformationValidation: any;
+
+  validationCorrect: boolean;
+
 
   patientInformationUrl: string = 'http://localhost:3050/patient/newPatient';
 
@@ -37,15 +52,37 @@ export class NewComponent implements OnInit {
   headerTitle = 'VitalCare®';
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   savePatient(data:any){
+    this.firstNameValidation = document.getElementById('inFirstName');
+    this.lastNameValidation = document.getElementById("inLastName");
+    this.ageValidation = document.getElementById("inAge");
+    this.bloodTypeValidation = document.getElementById("inBloodType");
+    this.heightValidation = document.getElementById("inHeight");
+    this.weightValidation = document.getElementById("inWeight");
+    this.reasonVisitValidation = document.getElementById("inReason");
+    this.extraInformationValidation = document.getElementById("inExtras");
+
+    if(this.firstNameValidation.value == ''  || this.lastNameValidation.value == '' || this.ageValidation.value == '' || this.bloodTypeValidation.value == '' || this.heightValidation.value == '' || 
+       this.weightValidation.value == '' ||this.reasonVisitValidation.value == '' || this.extraInformationValidation.value == '' ) {
+          this.validationCorrect = false;
+    }else{
+          this.validationCorrect = true;
+    }
+
+    if(this.validationCorrect == true){
     this.http.post(this.patientInformationUrl, data).subscribe((result)=>{
       console.log(result);
+      console.log(result)
       console.warn(result);
     });
     alert("Registered Successfully");
     this.router.navigateByUrl('/dashboard');
+  }else{
+    alert("Empty fields, please complete all");
+  }
   };
 
   UserIcon = faUser;

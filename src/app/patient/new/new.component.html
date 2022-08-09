@@ -3,53 +3,53 @@
 </div>
 
 <div class="container" id="general-container">
-    <p>Register a new patient</p>
-    <form #usersForm="ngForm" (ngSubmit)="savePatient(usersForm.value)">
+    <p class="addTitle">Register a new patient</p>
+    <form  #usersForm="ngForm" (ngSubmit)="savePatient(usersForm.value)">
        
         <div class="w-100 h-550 bg-white" id="form-card">
             <div class="row">
                 <div class="col-md">
-                    <label id="lblFirstName" for="inFirstName"><fa-icon [icon]="UserIcon" ></fa-icon> First name:</label><br>
-                    <input id="inFirstName" [(ngModel)]="name" type="text" name="name">
+                    <label class="inputUserIconText" id="lblFirstName" for="inFirstName"><fa-icon class="inputUserIcon" [icon]="UserIcon" ></fa-icon> First name</label><br>
+                    <input class="inputFirstNameText" id="inFirstName" [(ngModel)]="name" type="text" name="name">
                 </div>
                 <div class="col-md">
-                    <label id="lblLastName" for="inLastName"><fa-icon [icon]="UserIcon" ></fa-icon> Last name:</label><br>
-                    <input id="inLastName" [(ngModel)]="LastName" type="text" name="LastName">
+                    <label class="inputLastNameText" id="lblLastName" for="inLastName"><fa-icon [icon]="UserIcon" class="inputLastNameIcon"></fa-icon> Last name</label><br>
+                    <input class="inputFirstNameText" id="inLastName" [(ngModel)]="LastName" type="text" name="LastName">
                 </div>
 
             </div>
             <div class="row">
                 <div class="col-md">
-                    <label id="lblAge" for="inAge"><fa-icon [icon]="Birthday" ></fa-icon> Age:</label><br>
-                    <input id="inAge" [(ngModel)]="age" type="number" name="age">
+                    <label  class="inputUserIconText" id="lblAge" for="inAge"><fa-icon [icon]="Birthday" class="inputUserIcon" ></fa-icon> Age:</label><br>
+                    <input class="inputFirstNameText" id="inAge" [(ngModel)]="age" type="number" name="age">
                 </div>
                 <div class="col-md">
-                    <label id="lbBloodType" for="inBloodType"><fa-icon [icon]="Location" ></fa-icon> Blood Type:</label><br>
-                    <input id="inBloodType" [(ngModel)]="bloodType" type="text" name="bloodType">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md">
-                    <label id="lblHeight" for="inHeight"><fa-icon [icon]="HeightIcon" ></fa-icon> Height:</label><br>
-                    <input id="inHeight" [(ngModel)]="height" type="number" name="height" placeholder="Unit in cm">
-                </div>
-                <div class="col-md">
-                    <label id="lblWeight" for="inWeight"><fa-icon [icon]="WeightIcon"></fa-icon> Weight:</label><br>
-                    <input id="inWeight" [(ngModel)]="weight" type="number" name="weight" placeholder="Unit in kilograms">
+                    <label  class="inputUserIconText" id="lbBloodType" for="inBloodType"><fa-icon [icon]="Location" class="inputUserIcon" ></fa-icon> Blood Type:</label><br>
+                    <input  class="inputFirstNameText" id="inBloodType" [(ngModel)]="bloodType" type="text" name="bloodType">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md">
-                    <label id="lblReason" for="inReason"><fa-icon [icon]="Visit"></fa-icon> Reason of visit:</label><br>
-                    <input id="inReason" [(ngModel)]="Reason" name="Reason"  type="text">
+                    <label  class="inputUserIconText" id="lblHeight" for="inHeight"><fa-icon [icon]="HeightIcon" class="inputUserIcon" ></fa-icon> Height:</label><br>
+                    <input class="inputFirstNameText" id="inHeight" [(ngModel)]="height" type="number" name="height" placeholder="Unit in cm">
                 </div>
                 <div class="col-md">
-                    <label id="lblExtras" for="inExtras"><fa-icon [icon]="Comment"></fa-icon> Extra Information:</label><br>
-                    <input id="inExtras" [(ngModel)]="Extras" name="Extras"  type="text">
+                    <label  class="inputUserIconText" id="lblWeight" for="inWeight"><fa-icon [icon]="WeightIcon" class="inputUserIcon"></fa-icon> Weight:</label><br>
+                    <input class="inputFirstNameText" id="inWeight" [(ngModel)]="weight" type="number" name="weight" placeholder="Unit in kilograms">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <label  class="inputUserIconText" id="lblReason" for="inReason"><fa-icon [icon]="Visit" class="inputUserIcon"></fa-icon> Reason of visit:</label><br>
+                    <input class="inputFirstNameText" id="inReason" [(ngModel)]="Reason" name="Reason"  type="text">
+                </div>
+                <div class="col-md">
+                    <label  class="inputUserIconText" id="lblExtras" for="inExtras"><fa-icon [icon]="Comment" class="inputUserIcon"></fa-icon> Extra Information:</label><br>
+                    <input class="inputFirstNameText" id="inExtras" [(ngModel)]="Extras" name="Extras"  type="text">
                 </div>
             </div>
             <div class="row-final">
-                    <button id="btnSubmit" type="submit" value="Submit"><fa-icon class="userIcon" [icon]="SaveIcon"></fa-icon> Register</button>
+                    <button id="btnSubmit" type="submit" value="Submit"><fa-icon class="userIcon"  [icon]="SaveIcon"></fa-icon> Register</button>
             </div>
         </div>
     </form>
