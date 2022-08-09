@@ -36,6 +36,8 @@ import {faFilePdf} from '@fortawesome/free-solid-svg-icons';
 import {faFileCsv} from '@fortawesome/free-solid-svg-icons'; 
 import { faBedPulse } from '@fortawesome/free-solid-svg-icons';
 import { faThemeisle } from '@fortawesome/free-brands-svg-icons';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+
 
 /*===================================================================*/
 /*===================================================================*/

@@ -1,3 +1,83 @@
-<p>
-  Aqui apartado de medicina
-</p>
+
+<div class="container">
+  <div class="title">Medicine</div><br>
+  <div class="button">
+       <button (click)="onClick2()" id="m-button"> + Add medicine </button>
+       <input id="searchTerm" type="text" placeholder="   Search..." onkeyup="doSearch()"> 
+       <button (click)="onClick1()" id="s-button"> Search </button>
+   </div>
+   
+   <table id="meds">
+    <tr>
+      <th id="thLeft"> Patient</th>
+      <th>Medicine</th>
+      <th>Dose</th>
+      <th>Schedule</th>
+      <th>Taken</th>
+      <th id="thRight"> Delete</th>
+    </tr> 
+    
+    <tr>
+      <td> HALO </td>
+      <td> HOLU </td>
+      <td> HOLI </td>
+      <td> hola </td>
+      <td> <input type="checkbox" id="cbox" value="second_checkbox"> </td>
+      <td><fa-icon id="s-icon" [icon]="deleteIcon"></fa-icon></td> 
+    </tr> 
+    
+    <tr>
+      <td> babo </td>
+      <td> bebo</td>
+      <td> bibo </td>
+      <td> bubo </td>
+      <td> <input type="checkbox" id="cbox" value="second_checkbox"> </td>
+      <td> <fa-icon id="s-icon" [icon]="deleteIcon"></fa-icon> </td> 
+    </tr>
+  </table>
+</div>
+
+<div class="modal-container" id="modal-container">
+  <div class="modal">
+  <button id="c-button" class="c-icon">X</button> 
+      <h1>Medicine</h1>
+      <p>Register new medicine</p>
+      <form action="#" class="login__form" method="post">
+          <div class="col">
+              <div class="col-m" id="col-patient">
+                  <label for="i-patient">Patient</label><br>
+                  <!-- <input id="i-patient" type="text" name="patient"> -->
+
+                  <select id="i-patient"  name="patient" >
+                  <option value='1'>Daniel Gomez</option>
+                  <option value='2'>Karely Hernandez</option>
+              </select>
+
+              </div>
+          
+
+              <div class="col-m" id="col-medicine">
+                  <label for="i-medicine">Medicine</label><br>
+                  <input type="text" id="i-medicine" name="medicine">
+              </div>
+          </div>
+          <div class="col-b">
+              <div class="col-m" id="col-dose">
+                  <label for="i-dose">Dose</label><br>
+                  <input id="i-dose" type="text" name="dose">
+              </div>
+              <div class="col-m" id="col-hour">
+                  <label for="hour">Schedule</label><br>
+                  <input type="text" id="i-hour" name="hour">
+              </div>
+          </div>
+      </form>
+
+      <div class="f-button">
+          <input id="f-button" type="submit" value="Register medicine" name="register">
+      </div>
+  </div>
+
+ 
+
+</div>

@@ -1,4 +1,315 @@
-p{
-    margin-left: 840px;
-    margin-top: -400px;
+body {
+    background-color: #DFE0FC;
+    display: flex;
+    margin: 0;
+    min-height: 100vh;
+    float: right;
 }
+
+
+.container{
+    font-family: 'Poppins', sans-serif;
+    display: block;
+    justify-content: center;
+    width: 80%;
+    min-height: 100vh;
+    align-items: center;
+    height: 1000px;
+    margin: -690px 20px 20px 340px
+}
+
+.title{
+    width: 50%;
+    font-size: 20px;
+    margin: 60px;
+    color: #7a7a7a;
+}
+
+.button{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 20px;
+    margin: 20px;
+    justify-content: center;
+}
+
+#m-button{
+  background-color: #585CE4;
+  border-color: #585CE4;
+  color: white;
+  font-size: 15px;
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+  margin-right: 25%;
+  position: relative;
+  right: 43px;
+
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    border: 1px solid #585CE4;
+    background:#585CE4;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+}
+
+#searchTerm{
+  margin-left: 2%;
+  width: 222px;
+  height: 27px;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    border: 1px solid #ffffff;
+    font-size: 12px;
+    text-align: left;
+}
+
+#s-button{
+  height: 30px;
+  font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    border: 1px solid #585CE4;
+    background:#585CE4;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+}
+
+
+#meds {
+    font-family: 'Poppins', sans-serif;
+    border-collapse: collapse;
+    width: 72%;
+    align-items: center;
+    justify-content: center;
+    margin-left: 150px;
+    text-align: center;
+
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    background:#ffffff;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  #thLeft{
+    border-top-left-radius: 10px;
+  }
+
+  
+  #thRight{
+    border-top-right-radius: 10px;
+  }
+  
+  #meds tr:nth-child(even){background-color: #ffffffc9;}
+  
+  #meds tr:hover {background-color: #ddd;}
+
+  #meds td, #meds th {
+    border: 1px ;
+    padding: 8px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #7a7a7a;
+ }
+
+ #meds th {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #585CE4;
+    /* #585CE4 */
+    width: 100px;
+    color: white;
+  }
+  
+  
+ 
+
+  #cbox{
+    width: 15px;
+    height: 15px;
+  }
+
+  
+
+  #s-icon{
+    color: rgb(253, 60, 60);
+    size: 20px;
+  }
+
+  #s-icon:hover{
+    color: rgba(253, 60, 60, 0.719);
+    size: 20px;
+  }
+
+
+  .modal-container{
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2); 
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0;
+  }
+
+  .show{
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  h1{
+    color: #585CE4;
+  }
+
+  p{
+    margin-top: -10px;
+  }
+
+  form{
+    width: 100%;
+    justify-content: center;
+  }
+
+  .col{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    height: 40px;
+    align-items: center;
+  }
+
+  .col-b{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    margin-top: 10px;
+    height: 40px;
+    align-items: left;
+  }
+
+  .col-m{
+    display: block;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: gray;
+    font-size: 15px;
+    margin: 15px;
+  }
+
+  #col-patient{
+    width: 40%;
+  }
+
+  #col-medicine{
+    width: 60%;
+  }
+
+  input{
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    border: 1px solid #ffffff;
+    font-size: 12px;
+
+    margin-top: 5px;
+    height: 30px;
+    border-radius: 5px;
+    border-color: rgb(190, 190, 190);
+  }
+
+
+#i-medicine{
+  width: 100%;
+}
+
+.f-button{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+
+}
+
+  #f-button{
+    width: 200px;
+    height: 35px;
+    background-color: #585CE4;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    border-color: #585CE4;
+    font-size: 13px;
+  }
+
+  #f-button:hover{
+    background-color: #4b4fc4;
+  }
+
+
+  .modal{
+    background-color: white;
+    width: 50%;
+    height: 60%;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  #c-button{
+    margin-left: 97%;
+    width: 25px;
+    height: 25px;
+    background-color: rgb(250, 245, 245);
+    border-color: rgb(192, 189, 189);
+    border-width: 0.2px;
+    border-radius: 3px;
+
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    border: 1px solid #f3f3f3;
+    background:#f3f3f3;
+    color: rgb(105, 105, 105);
+    font-size: 15px;
+    text-align: center;
+  }
+
+  #c-button:hover{
+    background-color: rgb(192, 189, 189);
+  }
+
+  #i-patient{
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    border: 1px solid #ffffff;
+    font-size: 12px;
+    text-align: left;
+
+    margin-top: 5px;
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    border-color: rgb(190, 190, 190);
+    
+  }
