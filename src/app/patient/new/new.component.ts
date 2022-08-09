@@ -34,6 +34,9 @@ export class NewComponent implements OnInit {
 
   constructor(private router: Router, private http: HttpClient) {}
 
+  headerTitle = 'VitalCare®';
+
+
   ngOnInit(): void {}
 
   savePatient(data:any){
@@ -42,7 +45,7 @@ export class NewComponent implements OnInit {
       console.warn(result);
     });
     alert("Registered Successfully");
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/dashboard');
   };
 
   UserIcon = faUser;

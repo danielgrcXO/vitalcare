@@ -378,7 +378,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
     doc.setFontSize(4);
     doc.html(document.getElementById('pdfFormat'),{
         callback: function (doc) {
-          doc.save('Historial Medico Karely Hernandez Gonsales');
+          doc.save('Historial Medico');
         }
     });
   }
@@ -406,7 +406,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
     XLSX.utils.book_append_sheet(book, worksheet6, 'Oxygen' );
 
 
-    XLSX.writeFile(book, 'MedicalReport-Karely-Hernandez-Gonzales.xlsx');
+    XLSX.writeFile(book, 'MedicalReport.xlsx');
   }
 
   printExcelSimulated(): void {
@@ -431,7 +431,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
     XLSX.utils.book_append_sheet(book, worksheet6, 'Oxygen' );
 
 
-    XLSX.writeFile(book, 'MedicalReport-Oscar-Garcia-Carranza.xlsx');
+    XLSX.writeFile(book, 'MedicalReport.xlsx');
   }
 
   /*==============Funciones para paciente simulado=============*/
@@ -556,7 +556,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
     doc.setFontSize(4);
     doc.html(document.getElementById('pdfFormatSimulated'),{
         callback: function (doc) {
-          doc.save('Historial Medico Oscar Garcia Carranza');
+          doc.save('Historial Medico');
         }
     });
   }
@@ -601,6 +601,39 @@ export class DashboardComponent implements OnInit , OnDestroy {
 
           document.getElementById("excelButton").removeEventListener("click",this.printExcel);
           document.getElementById("excelButton").addEventListener("click",this.printExcelSimulated);
+     }else{
+          this.patientName = this.patientNameArray[this.patientNameArray.length-1];
+          this.locationValue = this.locationArray[this.locationArray.length-1];
+          this.bedNumberValue = this.bedNumberArray[this.bedNumberArray.length-1];
+          this.bloodTypeValue = this.bloodTypeArray[this.bloodTypeArray.length-1];
+          this.patientStatus = 'Unknown';
+          this.bloodPressure = 0;
+          this.heartRate = 0;
+          this.temperature = 0;
+          this.oxygen = 0;
+          this.chartData[0].data = [];
+          this.labels = [];
+          this.dateArray = [];
+          this.hourArray = [];
+          this.bloodPressureArray = [];
+          this.heartRateArray = [];
+          this.temperatureArray = [];
+          this.oxygenArray = [];
+          this.bloodPressureArraySimulated = [];
+          this.heartRateArraySimulated = [];
+          this.temperatureArraySimulated = [];
+          this.oxygenArraySimulated = [];
+          document.getElementById("bloodPressure-value").setAttribute("class","bloodPressure-value");
+          document.getElementById("bloodPressureIcon").setAttribute("class","bloodPressureIcon");
+          document.getElementById("heartPulseIcon").setAttribute("class","heartPulseIcon");
+          document.getElementById("heartRate-value").setAttribute("class","heartRate-value");
+          document.getElementById("temperatureIcon").setAttribute("class","temperatureIcon");
+          document.getElementById("temperature-value").setAttribute("class","temperature-value");
+          document.getElementById("oxygenIcon").setAttribute("class","oxygenIcon");
+          document.getElementById("oxygen-value").setAttribute("class","oxygen-value");
+          document.getElementById("patientStatus").setAttribute("class","Normal");
+          this.chartData[0].backgroundColor  = '#e45866';
+          
      }
    }
 

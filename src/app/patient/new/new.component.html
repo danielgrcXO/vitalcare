@@ -1,8 +1,11 @@
+<div class="header">
+    <p class="titleHeader">{{headerTitle}}</p>
+</div>
+
 <div class="container" id="general-container">
+    <p>Register a new patient</p>
     <form #usersForm="ngForm" (ngSubmit)="savePatient(usersForm.value)">
-        <div class="w-100 inline-block padding-tb-10" id="card-title">
-            <h3 class="float-left">New Patient</h3>
-        </div>
+       
         <div class="w-100 h-550 bg-white" id="form-card">
             <div class="row">
                 <div class="col-md">

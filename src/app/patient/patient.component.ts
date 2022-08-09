@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { DomSanitizer} from '@angular/platform-browser';
 import { patientInformation, patientStatus, patientStatusSimulated } from '../models/patientInterface';
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
-
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 /*===================================================================*/
 /*===================================================================*/
 
@@ -18,6 +18,11 @@ export class PatientComponent implements OnInit {
 
   private sub: Subscription;
 
+
+  //Iconos.
+  userIcon = faUser;
+
+  headerTitle ="VitalCare®";
   bloodPressureArray: number[] = [];
   bloodPressure: number = 0;
   heartRateArray: number[] = [];
@@ -37,6 +42,9 @@ export class PatientComponent implements OnInit {
   patientStatusArray: string[] = [];
   patientStatus: string;
   patientStatusArraySimulated: string[] = [];
+  statusLayout: string;
+  statusLayoutSimulated: string;
+
 
   patientInformationUrl: string = 'http://localhost:3050/pacient/patientInfo';
   patientStatusUrl : string = 'http://localhost:3050/pacient/patientStatus';
@@ -69,6 +77,7 @@ export class PatientComponent implements OnInit {
         data.map((z) => {
           this.patientStatusArray.push(z.patientStatus);
         });
+        this.statusLayout = this.patientStatusArray[this.patientStatusArray.length -1];
     });
 
     this.sub = this.http.get<patientStatusSimulated[]>(this.patientStatusUrlSimulated)
@@ -76,6 +85,7 @@ export class PatientComponent implements OnInit {
         data.map((z) => {
           this.patientStatusArraySimulated.push(z.patientStatus);
         });
+        this.statusLayoutSimulated = this.patientStatusArraySimulated[this.patientStatusArraySimulated.length - 1];
     });
 
   }

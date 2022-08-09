@@ -1,20 +1,59 @@
+<!--DIV DEL HEADER-->
+<div class="header">
+    <p class="titleHeader">{{headerTitle}}</p>
+</div>
+
+<div class="containerLayout">
+    <div class="w-100 inline-block padding-tb-10" id="card-title">
+        <h3 class="float-left">Patient's Layout</h3>
+        <button class="buttonNew" id="addPatient" type="button" (click)="open()"><fa-icon [icon]="AddUserIcon" ></fa-icon> Add New Patient</button>
+    </div>
+    
+    <div class="layout">
+    <img class="w-100" src="./assets/images/plan1.png" alt="floor-plan">
+    </div>
+
+    
+    <div id="user1" class="absolute h-50px">
+        <!--<p><fa-icon class="userIcon"[icon]="userIcon"> </fa-icon>{{patientNameArray[0]}}</p> -->
+
+        <p class="camilla1">1</p>
+        <p class="camilla2">2</p>
+        <p class="camilla3">3</p>
+        <p class="camilla4">4</p>
+        <p class="camilla5">5</p>
+        <p class="camilla6">6</p>
+        <p class="camilla7">7</p>
+        <p class="camilla8">8</p>
+        <p class="camilla9">9</p>
+        <p class="camilla10">10</p>
+        <p class="camilla11">11</p>
+        <p class="room1">Room 1</p>
+        <p class="room2">Room 2</p>
+        <p class="room6">Room 6</p>
+
+        <p class="patient1"><fa-icon class="userIcon"[icon]="userIcon"> </fa-icon>{{statusLayout}} </p>
+        <p class="patient2"><fa-icon class="userIcon"[icon]="userIcon"> </fa-icon>{{statusLayoutSimulated}} </p>
+
+        <!--<div class="float-right h-inherit bg-white radius-r-15 padding-10">
+            <div id="userName">{{patientNameArray[0]}}</div>
+            <div id="userLocation">Camilla {{bedNumberArray[0]}}</div>
+            <div id="userStatus">Estado: {{patientStatusArray[0]}}</div>
+        </div> -->
+    </div>
+
+
+</div>
+
+
+
+<!--
 <div class="container" id="general-container">
     <span *ngFor="let item of patientNameArray">
-        <div class="w-100 inline-block padding-tb-10" id="card-title">
-            <h3 class="float-left">Patients</h3>
-            <button class="float-right" id="addPatient" type="button" (click)="open()"><fa-icon [icon]="AddUserIcon" ></fa-icon> Agregar paciente</button>
-        </div>
-        <div class="w-100 bg-white" id="img-card">
-            <img class="w-100" src="./assets/images/plan1.png" alt="floor-plan">
-        </div>
-        <div id="user1" class="absolute h-50px">
-            <div class="float-left bg-red h-inherit radius-l-15 color-red padding-10">C</div>
-            <div class="float-right h-inherit bg-white radius-r-15 padding-10">
-                <div id="userName">{{patientNameArray[0]}}</div>
-                <div id="userLocation">Camilla {{bedNumberArray[0]}}</div>
-                <div id="userStatus">Estado: {{patientStatusArray[0]}}</div>
-            </div>
-        </div>
+      
+    
+
+
         <div id="user2" class="absolute h-50px">
             <div class="float-left bg-green h-inherit radius-l-15 color-green padding-10">C</div>
             <div class="float-right h-inherit bg-white radius-r-15 padding-10">
@@ -32,4 +71,4 @@
             </div>
         </div>
     </span>
-</div>
+</div>-->

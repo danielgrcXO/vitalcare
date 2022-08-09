@@ -570,6 +570,14 @@ th{
         font-size: 19px;
     }
 
+    .patientIcon{
+        /* color:rgb(45, 189, 53); */
+         color: #585de4e3;
+         padding-right: 10px;
+         font-size: 22px;
+         margin-left: 15px;
+     }
+     
     .welcome-container{
         background-color: white;
         width: 28%;
@@ -633,6 +641,8 @@ th{
         margin-top: -10px;
         padding-top: 10px;
     }
+
+    
 
     .patientInfo-container{
         background-color: rgb(254, 255, 255);
@@ -957,5 +967,7 @@ th{
         margin-top: -520px;
         margin-left: 5px;
     }
+
+    
 }
 
